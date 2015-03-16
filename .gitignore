@@ -1,0 +1,9 @@
+/vendor
+/node_modules
+.env
+.git/
+.DS_Store
+Thumbs.db
+/bootstrap/compiled.php
+composer.phar
+composer.lock

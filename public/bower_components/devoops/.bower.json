@@ -1,0 +1,14 @@
+{
+  "name": "devoops",
+  "homepage": "https://github.com/devoopsme/devoops",
+  "_release": "1745d784f6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1745d784f6813e47adcd65cad65d77b77e657809"
+  },
+  "_source": "git://github.com/devoopsme/devoops.git",
+  "_target": "*",
+  "_originalSource": "devoopsme/devoops",
+  "_direct": true
+}

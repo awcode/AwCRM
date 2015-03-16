@@ -1,0 +1,28 @@
+<h2>Edit <?=$contact['firstname']?></h2>
+{!! Form::open(array('url' => '#', 'class'=>'form')) !!}
+
+{!! Form::label('firstname', 'First Name')  !!}
+{!! Form::text("firstname", $contact['firstname'] , array('class'=>'form-control')) !!}
+
+{!! Form::label('surname', 'Surname')  !!}
+{!! Form::text("surname", $contact['surname'] , array('class'=>'form-control')) !!}
+
+{!! Form::label('email', 'E-Mail Address')  !!}
+{!! Form::text("email", $contact['email'] , array('class'=>'form-control')) !!}
+
+{!! Form::label('phone', 'Phone')  !!}
+{!! Form::text("phone", $contact['phone'] , array('class'=>'form-control')) !!}
+
+{!! Form::label('mobile', 'Mobile')  !!}
+{!! Form::text("mobile", $contact['mobile'] , array('class'=>'form-control')) !!}
+
+{!! Form::label('position', 'Position')  !!}
+{!! Form::text("position", $contact['position'] , array('class'=>'form-control')) !!}
+<br>
+
+{!! Form::hidden('cust_id', $cust_id) !!}
+{!! Form::hidden('contact_id', $contact['contact_id']) !!}
+{!! Form::submit('Save', array('class'=>'btn btn-default')) !!}
+{!! HTML::linkAction("CustomerController@getView", 'Cancel', array($cust_id), array('class'=>'btn')) !!}
+
+{!! Form::close() !!}

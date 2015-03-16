@@ -1,0 +1,33 @@
+#maincontent{
+	padding: 20px;  
+}
+div#breadcrumb {
+	margin-bottom: 0;
+}
+ 
+.form-signup, .form-signin {
+    width: 400px;
+}
+div.one-list-message .message-date {
+	width:150px;
+}
+div#messages-list {
+  margin-top: 0px;
+  padding: 0;
+}
+
+#ui-datepicker-div .ui-slider-horizontal .ui-slider-handle {
+  bortder-radius: 9px;
+  height: 18px;
+  width: 18px;
+  top: -7px;
+  margin-left: -9px;
+}
+.ui_tpicker_time{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #FFFC00;
+}
+#ui-datepicker-div .ui-state-highlight, #ui-datepicker-div.ui-widget-content .ui-state-highlight{
+	background: rgba(255,255,0, 0.6) !important;
+}
