@@ -40,7 +40,7 @@ class EloquentOrderRowsRepository extends AbstractEloquentRepository implements 
 		if($rows){
 			foreach($rows as $k=>$row){
 				$rows[$k]['title'] = 'Item '.$row['order_row_id'];
-				if($row['order_row_type'] != "transportersio"){
+				if($row['order_row_type'] == "transportersio"){
 					$rows[$k] = $this->transporters->prepareRow($row);
 				}elseif(is_string($row['order_row_object'])){
 					$obj = @unserialize($row['order_row_object']);

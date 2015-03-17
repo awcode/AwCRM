@@ -24,7 +24,7 @@ class BaseController extends Controller {
 			$this->event = $event;
 			$this->alert_count = $this->event->getAlertCount(Auth::user()->id);
 		}
-    	$this->title = str_replace("Controller", "", get_class($this));
+    	$this->title = str_replace(array("Controller", "AwCRM"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
 	}
 

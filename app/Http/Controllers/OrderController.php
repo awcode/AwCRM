@@ -32,10 +32,10 @@ class OrderController extends BaseController
 	
 	public function getIndex() {
     	$this->breadcrumbs[] = array(URL::to('order'), "All");
-        $custs = $this->customer->all();
+        $orders = $this->orders->all();
         
         $this->doLayout("orders.list")
-                ->with("custs", $custs);
+                ->with("orders", $orders);
     }
  
     public function getView($id) {

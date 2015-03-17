@@ -1,11 +1,11 @@
-<p><i class="fa fa-plus"></i>{!! HTML::linkAction("CustomerController@getNew", "Add new customer") !!}</p>
+<p><i class="fa fa-plus"></i>{!! HTML::linkAction("OrderController@getNew", "Add new order") !!}</p>
 
 <div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">
 					<i class="fa fa-users"></i>
-					<span>Customers</span>
+					<span>Orders</span>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -24,10 +24,9 @@
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-2">
 					<thead>
 						<tr>
-							<th>Company Name</th>
-							<th>Phone</th>
-							<th>Email</th>
-							<th>Last Contact</th>
+							<th>ID</th>
+							<th>Status</th>
+							<th>Value</th>
 							<th>Staff</th>
 							<th>Edit</th>
 						</tr>
@@ -35,24 +34,24 @@
 					<tbody>
 						
 
-@foreach($custs as $cust)
+@if(count($orders))
+@foreach($orders as $order)
 						<tr>
-							<td>{!! HTML::linkAction("CustomerController@getView", $cust['company_name'], array($cust['cust_id'])) !!}</td>
-							<td>{{$cust['company_phone']}}</td>
-							<td>{{$cust['company_email']}}</td>
-							<td></td>
-							<td>{{$cust['staff_name']}}</td>
-							<td><a href="{{URL::to('customer/edit', array($cust['cust_id']))}}"><i class="fa fa-edit"></i></a></td>
+							<td>{!! HTML::linkAction("OrderController@getView", $order['order_id'], array($order['order_id'])) !!}</td>
+							<td>{{$order['order_status']}}</td>
+							<td>{{$order['order_value']}}</td>
+							<td>{{$order['user_id']}}</td>
+							<td><a href="{{URL::to('orders/view', array($order['order_id']))}}"><i class="fa fa-edit"></i></a></td>
 						</tr>
 
 @endforeach
+@endif
 					</tbody>
 					<tfoot>
 						<tr>
-							<th>Company Name</th>
-							<th>Phone</th>
-							<th>Email</th>
-							<th>Last Contact</th>
+							<th>ID</th>
+							<th>Status</th>
+							<th>Value</th>
 							<th>Staff</th>
 							<th>Edit</th>
 						</tr>

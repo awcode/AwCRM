@@ -6,6 +6,7 @@
 	<div class="clearfix visible-xs"></div>
 	<div class="col-xs-12 col-sm-8 col-md-7 pull-right">
 		<div class="row">
+		<!--
 			<div class="col-xs-4">
 				<div class="sparkline-dashboard" id="sparkline-1"></div>
 				<div class="sparkline-dashboard-info">
@@ -27,12 +28,16 @@
 					<span>REVENUE</span>
 				</div>
 			</div>
+		-->
+		
 		</div>
 	</div>
 </div>
 <!--End Dashboard 1-->
 <!--Start Dashboard 2-->
 <div class="row-fluid">
+	<h1>Dashboard Coming soon</h1>
+	<!--
 	<div id="dashboard_links" class="col-xs-12 col-sm-2 pull-right">
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="#" class="tab-link" id="overview">Overview</a></li>
@@ -46,6 +51,7 @@
 	</div>
 	<div id="dashboard_tabs" class="col-xs-12 col-sm-10">
 		<!--Start Dashboard Tab 1-->
+		<!--
 		<div id="dashboard-overview" class="row" style="visibility: visible; position: relative;">
 			<div id="ow-marketplace" class="col-sm-12 col-md-6">
 				<div id="ow-setting">
@@ -184,6 +190,7 @@
 		</div>
 		<!--End Dashboard Tab 1-->
 		<!--Start Dashboard Tab 2-->
+		<!--
 		<div id="dashboard-clients" class="row" style="visibility: hidden; position: absolute;">
 			<div class="row one-list-message">
 				<div class="col-xs-1"><i class="fa fa-users"></i></div>
@@ -251,14 +258,15 @@
 		</div>
 		<!--End Dashboard Tab 2-->
 		<!--Start Dashboard Tab 3-->
+		<!--
 		<div id="dashboard-graph" class="row" style="width:100%; visibility: hidden; position: absolute;" >
 			<div class="col-xs-12">
 				<h4 class="page-header">OS Platform Statistics</h4>
 				<div id="stat-graph" style="height: 300px;"></div>
 			</div>
 		</div>
-		<!--End Dashboard Tab 3-->
-		<!--Start Dashboard Tab 4-->
+		<!--End Dashboard Tab 3--
+		<!--Start Dashboard Tab 4--
 		<div id="dashboard-servers" class="row" style="visibility: hidden; position: absolute;">
 			<div class="col-xs-12 col-sm-6 col-md-4 ow-server">
 				<h4 class="page-header text-right"><i class="fa fa-windows"></i>#SRV-APP</h4>
@@ -384,8 +392,8 @@
 				<a href="#" class="col-xs-4 col-sm-2 btn-default text-center"><i class="fa fa-user"></i> <b>19985</b> <span>Clients</span></a>
 			</div>
 		</div>
-		<!--End Dashboard Tab 4-->
-		<!--Start Dashboard Tab 5-->
+		<!--End Dashboard Tab 4--
+		<!--Start Dashboard Tab 5--
 		<div id="dashboard-planning" class="row" style="visibility: hidden; position: absolute;">
 				<div class="col-xs-12 col-sm-6">
 					<h4 class="page-header">Planned projects</h4>
@@ -452,7 +460,7 @@
 				</div>
 		</div>
 		<!--End Dashboard Tab 5-->
-		<!--Start Dashboard Tab 6-->
+		<!--Start Dashboard Tab 6--
 		<div id="dashboard-netmap" class="row" style="visibility: hidden; position: absolute;">
 			<div class="col-xs-12">
 				<h4 class="page-header">Network map(mesh topology)</h4>
@@ -460,7 +468,7 @@
 			</div>
 		</div>
 		<!--End Dashboard Tab 6-->
-		<!--Start Dashboard Tab 7-->
+		<!--Start Dashboard Tab 7--
 		<div id="dashboard-stock" class="row" style="visibility: hidden; position: absolute;">
 			<div class="col-xs-12">
 				<h4 class="page-header">Stocks from Yahoo Finance</h4>

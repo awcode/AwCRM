@@ -24,6 +24,7 @@ class Transporters extends Migration {
 		Schema::create('transport_legs', function(Blueprint $table)
 		{
 			$table->increments("transport_leg_id");
+			$table->integer("transport_id");
 			$table->string("transport_leg_start", 250);
 			$table->decimal("transport_leg_start_lat", 18,12);
 			$table->decimal("transport_leg_start_lng", 18,12);

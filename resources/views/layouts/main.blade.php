@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-    <title>awCRM<?php if($title !="") echo " - ".$title; ?></title>
+    <title><?php if($title !="") echo " - ".$title; ?></title>
 
 	{!! HTML::style('/bower_components/devoops/plugins/bootstrap/bootstrap.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.css') !!}
@@ -74,7 +74,7 @@
 		<div class="container-fluid expanded-panel">
 			<div class="row">
 				<div id="logo" class="col-xs-12 col-sm-2">
-					<a href="{{URL::to('/')}}">AwCRM</a>
+					<a href="{{URL::to('/')}}">Home</a>
 				</div>
 				<div id="top-panel" class="col-xs-12 col-sm-10">
 					<div class="row">

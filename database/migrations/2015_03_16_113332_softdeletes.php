@@ -24,14 +24,6 @@ class Softdeletes extends Migration {
 		{
 			$table->softDeletes();
 		});
-		Schema::table('events', function($table)
-		{
-			$table->softDeletes();
-		});
-		Schema::table('eventtypes', function($table)
-		{
-			$table->softDeletes();
-		});
 		Schema::table('log', function($table)
 		{
 			$table->softDeletes();
