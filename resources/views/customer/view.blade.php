@@ -58,22 +58,29 @@
 			</div>
 			<div class="box-content">
 				<div class="card">
-					@if (count($eventtype_icons) > 0)
-						@foreach ($eventtype_icons as $event_link)
-							<a href="#" onclick="popupNewEvent({{ $event_link['id'] }}, {{ $cust['cust_id'] }}); return false;">
-							<i class="{{ $event_link['icon'] }}"></i>
-							Add {{ $event_link['name'] }}
-							</a>
-						@endforeach
-						<hr>
-					@endif
-					@if (count($customer_events) > 0)
-						@foreach ($customer_events as $event)
-							{{ $event['type_name'] }} - {{ date("D jS F H:i", strtotime($event['start'])) }} - {{ $event['title'] }} <br>
-						@endforeach
-					@endif
-					
-					
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							Events
+							@if (count($eventtype_icons) > 0)
+								@foreach ($eventtype_icons as $event_link)
+									<a href="#" onclick="popupNewEvent({{ $event_link['id'] }}, {{ $cust['cust_id'] }}); return false;">
+									<i class="{{ $event_link['icon'] }}"></i>
+									Add {{ $event_link['name'] }}
+									</a>
+								@endforeach
+								<hr>
+							@endif
+							@if (count($customer_events) > 0)
+								@foreach ($customer_events as $event)
+									{{ $event['type_name'] }} - {{ date("D jS F H:i", strtotime($event['start'])) }} - {{ $event['title'] }} <br>
+								@endforeach
+							@endif
+						</div>
+						<div class="col-xs-12 col-md-6">
+							Orders
+							{!! HTML::linkAction("OrderController@getNew", 'Add Order', array($cust['cust_id']), array('class'=>'btn btn-default pull-right')) !!}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

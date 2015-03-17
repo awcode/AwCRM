@@ -147,13 +147,31 @@ return [
 		
 		//Custom entries
 		'Illuminate\Html\HtmlServiceProvider',
+		
+		//Repositories
 		'Repositories\Customer\CustomerServiceProvider',
 		'Repositories\Address\AddressServiceProvider',
 		'Repositories\Contact\ContactServiceProvider',
 		'Repositories\Event\EventServiceProvider',
 		'Repositories\EventTypes\EventTypesServiceProvider',
 		'Repositories\User\UserServiceProvider',
-		'Repositories\Country\CountryServiceProvider'
+		'Repositories\Country\CountryServiceProvider',
+		'Repositories\Orders\OrdersServiceProvider',
+		'Repositories\OrderRows\OrderRowsServiceProvider',
+		'Repositories\Payments\PaymentsServiceProvider',
+		'Repositories\PaymentAllocation\PaymentAllocationServiceProvider',
+		'Repositories\Triggers\TriggersServiceProvider',
+		'Repositories\Log\LogServiceProvider',
+		'Repositories\ConfigSettings\ConfigSettingsServiceProvider',
+		
+		//Modules
+		'TransportersIO\Repositories\Transport\TransportServiceProvider',
+		'TransportersIO\Repositories\TransportLegs\TransportLegsServiceProvider',
+		'TransportersIO\Repositories\Cargo\CargoServiceProvider',
+		'TransportersIO\Repositories\CargoTypes\CargoTypesServiceProvider',
+		'TransportersIO\Repositories\CargoGroups\CargoGroupsServiceProvider',
+		'TransportersIO\Repositories\VehicleTypes\VehicleTypesServiceProvider',
+		
 
 	],
 

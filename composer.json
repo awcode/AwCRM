@@ -21,7 +21,8 @@
 		],
 		"psr-4": {
 			"AwCRM\\": "app/",
-			"Repositories\\": "app/Repositories"
+			"Repositories\\": "app/Repositories",
+			"TransportersIO\\": "vendor/TransportersIO"
 		}
 	},
 	"autoload-dev": {

@@ -31,3 +31,6 @@ div#messages-list {
 #ui-datepicker-div .ui-state-highlight, #ui-datepicker-div.ui-widget-content .ui-state-highlight{
 	background: rgba(255,255,0, 0.6) !important;
 }
+#modalbox.wide .devoops-modal{
+	width: 90%;
+}

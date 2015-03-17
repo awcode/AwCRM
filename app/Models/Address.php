@@ -1,8 +1,11 @@
 <?php
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Eloquent  {
 
+	use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 	/**
 	 * The database table used by the model.
 	 *

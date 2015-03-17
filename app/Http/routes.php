@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(array('before' => 'auth'), function()
+Route::group(['middleware' => 'auth'], function()
 {
 	Route::controller('customer', 'CustomerController');
 	Route::controller('customercontact', 'CustomerContactController');
@@ -20,8 +20,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::controller('event', 'EventController');
 
 	Route::controller('staff', 'StaffController');
+
+	Route::controller('orders', 'OrderController');
+	Route::controller('orderrows', 'OrderRowsController');
 	
 	Route::controller('settings', 'SettingsController');
+
+
+	Route::controller('transportersio', 'TransportersIOController');
 });
 
 Route::controller('/', 'HomeController');

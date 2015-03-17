@@ -7,6 +7,7 @@ use Repositories\User\UserInterface as UserInterface ;
 use Repositories\Address\AddressInterface as AddressInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
 use Repositories\EventTypes\EventTypesInterface as EventTypesInterface ;
+use Repositories\Orders\OrdersInterface as OrdersInterface ;
 use URL;
 use Validator;
 use Input;
@@ -16,7 +17,7 @@ class CustomerController extends BaseController
 {
 	protected $layout = "layouts.main";
 
-	public function __construct(CustomerInterface $customer, ContactInterface $contact, UserInterface $user , AddressInterface $address, EventTypesInterface $eventtypes, EventInterface $event) {
+	public function __construct(CustomerInterface $customer, ContactInterface $contact, UserInterface $user , AddressInterface $address, EventTypesInterface $eventtypes, EventInterface $event, OrdersInterface $orders) {
 		parent::__construct($event);
 		$this->customer = $customer;
 		$this->contact = $contact;
@@ -24,6 +25,7 @@ class CustomerController extends BaseController
 		$this->address = $address;
 		$this->eventtypes = $eventtypes;
 		$this->event = $event;
+		$this->orders = $orders;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     	$this->breadcrumbs[] = array(URL::to('customer'), "Customers");
@@ -44,12 +46,14 @@ class CustomerController extends BaseController
         $addresses = $this->address->getWhere('cust_id', '=', $id);
         $eventtype_icons = $this->eventtypes->getCustomerIcons();
         $customer_events = $this->event->getByCustomer($id);
+        $orders = $this->orders->getWhere("cust_id", "=", $id);
         
         $this->doLayout("customer.view")
                 ->with("cust", $cust)
                 ->with("addresses", $addresses)
                 ->with("contacts", $contacts)
                 ->with("eventtype_icons", $eventtype_icons)
+                ->with("orders", $orders)
                 ->with("customer_events", $customer_events);
     
     	$this->title = $cust['company_name'];

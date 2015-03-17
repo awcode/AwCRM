@@ -64,5 +64,12 @@ class EloquentCustomerRepository extends AbstractEloquentRepository implements C
       
 		return $cust;
 	}
+	
+	public function getEmptyArr(){
+		$cust = $this->_getEmptyArr();
+		$cust['staff_added_name'] = "Unassigned";
+		$cust['staff_name'] = "Unassigned";
+        return $cust;
+	}
 
 }

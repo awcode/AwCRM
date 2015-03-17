@@ -733,6 +733,7 @@ function CloseModalBox(){
 		modalbox.find('.devoops-modal-inner').children().remove();
 		modalbox.find('.devoops-modal-bottom').children().remove();
 		$('body').removeClass("body-expanded");
+		$('#modalbox').removeClass("wide");
 	});
 }
 //

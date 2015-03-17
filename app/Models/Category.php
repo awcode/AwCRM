@@ -1,8 +1,11 @@
 <?php
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+class Category extends Eloquent {
 
-class Category extends Eloquent implements {
+	use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
 	/**
 	 * The database table used by the model.
 	 *

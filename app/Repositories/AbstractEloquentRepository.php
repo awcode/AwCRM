@@ -63,6 +63,10 @@ abstract class AbstractEloquentRepository {
 	{
 		return $this->model->where($key, $type, $value)->get()->toArray();
 	}
+	
+	public function save(){
+		return $this->model->save();
+	}
 
 	
 	public function addUpdatePost(){
@@ -153,5 +157,37 @@ abstract class AbstractEloquentRepository {
         return $arr;
 	}
 	
+	public function saveKeyValues($arr = false){
+		if(!$arr){$arr = Input::get('config_fields');}
+		
+		if(is_array($arr) && count($arr)){
+			foreach($arr as $field){
+				$field = trim($field);
+				if($field != ""){
+					$record = $this->model->find($field);
+					if(!$record){
+						$record = new $this->model;
+						$record->config_id = $field;
+					}
+			
+					$record->config_value = Input::get($field);
+				
+					$record->save();
+				}
+			}
+		}
+	}
+	
+	public function getFlatKeyValues($arr = false){
+		if(!$arr){$arr = $this->all();}
+		$flat_arr = array();
+		
+		if(is_array($arr) && count($arr)){
+			foreach($arr as $k=>$v){
+				$flat_arr[$k] = $v['config_value'];
+			}
+		}
+		return $flat_arr;
+	}
 
 }
