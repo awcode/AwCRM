@@ -17,6 +17,7 @@ class EloquentCustomerRepository extends AbstractEloquentRepository implements C
 	*/
   	public function __construct(Customer $model, UserInterface $user)
   	{
+		parent::__construct();
     	$this->model = $model;
     	$this->user = $user;
   	}

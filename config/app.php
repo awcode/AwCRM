@@ -165,12 +165,11 @@ return [
 		'Repositories\ConfigSettings\ConfigSettingsServiceProvider',
 		
 		//Modules
-		'TransportersIO\Repositories\Transport\TransportServiceProvider',
-		'TransportersIO\Repositories\TransportLegs\TransportLegsServiceProvider',
-		'TransportersIO\Repositories\Cargo\CargoServiceProvider',
-		'TransportersIO\Repositories\CargoTypes\CargoTypesServiceProvider',
-		'TransportersIO\Repositories\CargoGroups\CargoGroupsServiceProvider',
-		'TransportersIO\Repositories\VehicleTypes\VehicleTypesServiceProvider',
+		//'AwCRM\Modules\ServiceProvider',
+		'Caffeinated\Modules\ModulesServiceProvider',
+		
+		//Need to autoload these from inside module
+		
 		
 
 	],
@@ -221,7 +220,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade', 
-		'HTML'		=> 'Illuminate\Html\HtmlFacade'
+		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+		'Module'	=> 'Caffeinated\Modules\Facades\Module',
 
 	],
 

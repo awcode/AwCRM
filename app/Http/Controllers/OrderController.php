@@ -28,6 +28,7 @@ class OrderController extends BaseController
 		$this->event = $event;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->breadcrumbs[] = array(URL::to('order'), "Orders");
+    	
 	}
 	
 	public function getIndex() {
@@ -44,13 +45,15 @@ class OrderController extends BaseController
     	$orderrows = $this->orderrows->prepareRows($id);
         $cust = $this->customer->find($order['cust_id']);
         $contacts = $this->contact->getWhere('cust_id', '=', $order['cust_id']);
+        $buttons = $this->modulesFilterHTML("", "addOrderRowButtons");
         
         
         $this->doLayout("orders.view")
         		->with("order", $order)
         		->with("orderrows", $orderrows)
                 ->with("cust", $cust)
-                ->with("contacts", $contacts);
+                ->with("contacts", $contacts)
+                ->with("buttons", $buttons);
     
     	$this->title = $cust['company_name'];
     }

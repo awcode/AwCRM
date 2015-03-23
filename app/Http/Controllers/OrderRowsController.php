@@ -8,7 +8,6 @@ use Repositories\Address\AddressInterface as AddressInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
 use Repositories\Orders\OrdersInterface as OrdersInterface ;
 use Repositories\OrderRows\OrderRowsInterface as OrderRowsInterface ;
-use TransportersIO\Classes\TransportersIO as TransportersIO;
 
 use URL;
 use Validator;
@@ -19,12 +18,11 @@ class OrderRowsController extends BaseController
 {
 	protected $layout = "layouts.popup";
 
-	public function __construct(OrderRowsInterface $orderrows, OrdersInterface $orders, AddressInterface $address, EventInterface $event, TransportersIO $transportersIO) {
+	public function __construct(OrderRowsInterface $orderrows, OrdersInterface $orders, AddressInterface $address, EventInterface $event) {
 		parent::__construct($event);
 		$this->orderrows = $orderrows;
 		$this->orders = $orders;
 		$this->address = $address;
-		$this->transportersIO = $transportersIO;
 		$this->event = $event;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->breadcrumbs[] = array(URL::to('order'), "Orders");

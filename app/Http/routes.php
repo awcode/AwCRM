@@ -26,8 +26,6 @@ Route::group(['middleware' => 'auth'], function()
 	
 	Route::controller('settings', 'SettingsController');
 
-
-	Route::controller('transportersio', 'TransportersIOController');
 });
 
 Route::controller('/', 'HomeController');

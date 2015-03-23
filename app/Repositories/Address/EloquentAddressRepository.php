@@ -16,6 +16,7 @@ class EloquentAddressRepository extends AbstractEloquentRepository implements Ad
 	*/
 	public function __construct(Address $model, CountryInterface $country)
 	{
+		parent::__construct();
 		$this->model = $model;
 		$this->country = $country;
 	}

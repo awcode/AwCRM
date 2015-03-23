@@ -15,6 +15,7 @@ class EloquentCountryRepository extends AbstractEloquentRepository implements Co
   	*/
   	public function __construct(Country $model)
   	{
+		parent::__construct();
     	$this->model = $model;
   	}
  

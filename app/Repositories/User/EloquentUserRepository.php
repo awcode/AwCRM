@@ -8,20 +8,21 @@ use Request;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentUserRepository extends AbstractEloquentRepository implements UserInterface { 
-  /**
-   * @var Model
-   */
-  protected $model;
+  	/**
+   	* @var Model
+   	*/
+  	protected $model;
  
-  /**
-   * Constructor
-   */
-  public function __construct(User $model)
-  {
+  	/**
+   	* Constructor
+   	*/
+  	public function __construct(User $model)
+  	{
+		parent::__construct();
     	$this->model = $model;
-  }
+  	}
  
-  public function addUser(){
+  	public function addUser(){
  		$user = new $this->model;
 		$user->firstname = Input::get('firstname');
 		$user->lastname = Input::get('lastname');
@@ -30,14 +31,14 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserI
 		$user->save();
 		
 		return $user->user_id;
-  }
+  	}
   
-  public function recordLogin($id){
+  	public function recordLogin($id){
   		$user = $this->model->find($id);
   		$user->lastlogin_date = date("Y-m-d H:i:s");
   		$user->lastlogin_ip = Request::getClientIp();  	
   		$user->save();	
-  }
+  	}
 	
 	public function allUserSelectArr(){
 		$all = $this->all();

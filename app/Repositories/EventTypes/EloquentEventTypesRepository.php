@@ -15,6 +15,7 @@ class EloquentEventTypesRepository extends AbstractEloquentRepository implements
    	*/
   	public function __construct(EventTypes $model)
   	{
+		parent::__construct();
     	$this->model = $model;
   	}
   

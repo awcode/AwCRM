@@ -15,6 +15,7 @@ class EloquentConfigSettingsRepository extends AbstractEloquentRepository implem
 	*/
   	public function __construct(ConfigSettings $model)
   	{
+		parent::__construct();
     	$this->model = $model;
 	}
 	

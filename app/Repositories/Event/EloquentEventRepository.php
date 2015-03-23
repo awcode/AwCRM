@@ -19,6 +19,7 @@ class EloquentEventRepository extends AbstractEloquentRepository implements Even
    	*/
 	public function __construct(Events $model, EventTypesInterface $eventtypes)
 	{
+		parent::__construct();
 		$this->model = $model;
 		$this->eventtypes = $eventtypes;
 	}
