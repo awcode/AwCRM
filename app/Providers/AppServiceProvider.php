@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Providers;
+<?php namespace AwCore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
-			'AwCRM\Services\Registrar'
+			'AwCore\Services\Registrar'
 		);
 	}
 

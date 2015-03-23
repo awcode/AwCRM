@@ -1,5 +1,5 @@
 <?php
-namespace AwCRM\Http\Controllers;
+namespace AwCore\Http\Controllers;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Contracts\Auth\Guard;
@@ -30,14 +30,18 @@ class BaseController extends Controller {
 			$this->event = $event;
 			$this->alert_count = $this->event->getAlertCount(Auth::user()->id);
 		}
-    	$this->title = str_replace(array("Controller", "AwCRM"), "", get_class($this));
+    	$this->title = str_replace(array("Controller", "AwCore"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
 		$modules = Module::enabled();
 		if(is_array($modules) && count($modules)){
 			foreach($modules as $module){
 				$slug = $module['slug'];
+<<<<<<< HEAD
 				$path = "\AwCRM\Modules\\".$slug."\\".$slug."";
+=======
+				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+>>>>>>> 94ed90bd3d41d36752d78a9ce7f77554d2bcf7ad
 				$this->modules[$slug] = App::make($path);
 				if(isset($this->modules[$slug]->filters) && is_array($this->modules[$slug]->filters) && count($this->modules[$slug]->filters)){
 					foreach($this->modules[$slug]->filters as $filter=>$method){
@@ -67,7 +71,11 @@ class BaseController extends Controller {
 			
 			$this->layout = View::make($this->layout)
 				->with("alert_count", $this->alert_count)
+<<<<<<< HEAD
 				->with("product_name", $this->modulesFilterHTML("AwCRM","setProductName"));
+=======
+				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"));
+>>>>>>> 94ed90bd3d41d36752d78a9ce7f77554d2bcf7ad
 		}
 		
 	}

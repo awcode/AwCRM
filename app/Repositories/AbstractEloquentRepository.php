@@ -17,7 +17,7 @@ abstract class AbstractEloquentRepository {
 		if(is_array($modules) && count($modules)){
 			foreach($modules as $module){
 				$slug = $module['slug'];
-				$path = "\AwCRM\Modules\\".$slug."\\".$slug."";
+				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
 				$this->modules[$slug] = App::make($path);
 			}
 		}

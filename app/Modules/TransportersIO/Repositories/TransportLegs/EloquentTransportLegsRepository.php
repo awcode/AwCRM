@@ -1,7 +1,7 @@
 <?php
-namespace AwCRM\Modules\TransportersIO\Repositories\TransportLegs;
+namespace AwCore\Modules\TransportersIO\Repositories\TransportLegs;
 
-use AwCRM\Modules\TransportersIO\Models\TransportLegs as TransportLegs;
+use AwCore\Modules\TransportersIO\Models\TransportLegs as TransportLegs;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentTransportLegsRepository extends AbstractEloquentRepository implements TransportLegsInterface { 

@@ -1,7 +1,7 @@
 <?php 
-namespace AwCRM\Modules\TransportersIO\Controllers;
+namespace AwCore\Modules\TransportersIO\Controllers;
 
-use AwCRM\Http\Controllers\BaseController as BaseController;
+use AwCore\Http\Controllers\BaseController as BaseController;
 use Repositories\Customer\CustomerInterface as CustomerInterface ;
 use Repositories\Contact\ContactInterface as ContactInterface ;
 use Repositories\User\UserInterface as UserInterface ;
@@ -9,7 +9,7 @@ use Repositories\Address\AddressInterface as AddressInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
 use Repositories\Orders\OrdersInterface as OrdersInterface ;
 use Repositories\OrderRows\OrderRowsInterface as OrderRowsInterface ;
-use AwCRM\Modules\TransportersIO\TransportersIO as TransportersIO;
+use AwCore\Modules\TransportersIO\TransportersIO as TransportersIO;
 
 use URL;
 use Validator;

@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Http\Middleware;
+<?php namespace AwCore\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Console\Commands;
+<?php namespace AwCore\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

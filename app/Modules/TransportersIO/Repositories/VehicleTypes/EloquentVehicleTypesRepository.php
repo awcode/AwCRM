@@ -1,7 +1,7 @@
 <?php
-namespace AwCRM\Modules\TransportersIO\Repositories\VehicleTypes;
+namespace AwCore\Modules\TransportersIO\Repositories\VehicleTypes;
 
-use AwCRM\Modules\TransportersIO\Models\VehicleTypes as VehicleTypes;
+use AwCore\Modules\TransportersIO\Models\VehicleTypes as VehicleTypes;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentVehicleTypesRepository extends AbstractEloquentRepository implements VehicleTypesInterface { 

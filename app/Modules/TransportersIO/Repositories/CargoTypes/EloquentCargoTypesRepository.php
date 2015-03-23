@@ -1,7 +1,7 @@
 <?php
-namespace AwCRM\Modules\TransportersIO\Repositories\CargoTypes;
+namespace AwCore\Modules\TransportersIO\Repositories\CargoTypes;
 
-use AwCRM\Modules\TransportersIO\Models\CargoTypes as CargoTypes;
+use AwCore\Modules\TransportersIO\Models\CargoTypes as CargoTypes;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentCargoTypesRepository extends AbstractEloquentRepository implements CargoTypesInterface { 

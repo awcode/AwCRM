@@ -1,6 +1,6 @@
-<?php namespace AwCRM\Services;
+<?php namespace AwCore\Services;
 
-use AwCRM\User;
+use AwCore\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

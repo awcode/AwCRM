@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost/AwCRM/public',
+	'url' => 'http://localhost/AwCore/public',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -139,11 +139,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'AwCRM\Providers\AppServiceProvider',
-		'AwCRM\Providers\BusServiceProvider',
-		'AwCRM\Providers\ConfigServiceProvider',
-		'AwCRM\Providers\EventServiceProvider',
-		'AwCRM\Providers\RouteServiceProvider',
+		'AwCore\Providers\AppServiceProvider',
+		'AwCore\Providers\BusServiceProvider',
+		'AwCore\Providers\ConfigServiceProvider',
+		'AwCore\Providers\EventServiceProvider',
+		'AwCore\Providers\RouteServiceProvider',
 		
 		//Custom entries
 		'Illuminate\Html\HtmlServiceProvider',
@@ -165,7 +165,9 @@ return [
 		'Repositories\ConfigSettings\ConfigSettingsServiceProvider',
 		
 		//Modules
-		//'AwCRM\Modules\ServiceProvider',
+
+		//'AwCore\Modules\ServiceProvider',
+
 		'Caffeinated\Modules\ModulesServiceProvider',
 		
 		//Need to autoload these from inside module

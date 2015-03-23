@@ -1,7 +1,7 @@
 <?php
-namespace AwCRM\Modules\TransportersIO\Repositories\Transport;
+namespace AwCore\Modules\TransportersIO\Repositories\Transport;
 
-use AwCRM\Modules\TransportersIO\Models\Transports as Transports;
+use AwCore\Modules\TransportersIO\Models\Transports as Transports;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentTransportRepository extends AbstractEloquentRepository implements TransportInterface { 

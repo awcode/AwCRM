@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Events;
+<?php namespace AwCore\Events;
 
 abstract class Event {
 

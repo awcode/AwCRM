@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Http\Requests;
+<?php namespace AwCore\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

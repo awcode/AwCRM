@@ -1,14 +1,14 @@
-<?php namespace AwCRM\Modules\TransportersIO;
+<?php namespace AwCore\Modules\TransportersIO;
 
 use Illuminate\Support\ServiceProvider;
 use View;
 
-use AwCRM\Modules\TransportersIO\Repositories\Transport\TransportInterface as TransportInterface ;
-use AwCRM\Modules\TransportersIO\Repositories\TransportLegs\TransportLegsInterface as TransportLegsInterface ;
-use AwCRM\Modules\TransportersIO\Repositories\Cargo\CargoInterface as CargoInterface ;
-use AwCRM\Modules\TransportersIO\Repositories\CargoTypes\CargoTypesInterface as CargoTypesInterface ;
-use AwCRM\Modules\TransportersIO\Repositories\CargoGroups\CargoGroupsInterface as CargoGroupsInterface ;
-use AwCRM\Modules\TransportersIO\Repositories\VehicleTypes\VehicleTypesInterface as VehicleTypesInterface ;
+use AwCore\Modules\TransportersIO\Repositories\Transport\TransportInterface as TransportInterface ;
+use AwCore\Modules\TransportersIO\Repositories\TransportLegs\TransportLegsInterface as TransportLegsInterface ;
+use AwCore\Modules\TransportersIO\Repositories\Cargo\CargoInterface as CargoInterface ;
+use AwCore\Modules\TransportersIO\Repositories\CargoTypes\CargoTypesInterface as CargoTypesInterface ;
+use AwCore\Modules\TransportersIO\Repositories\CargoGroups\CargoGroupsInterface as CargoGroupsInterface ;
+use AwCore\Modules\TransportersIO\Repositories\VehicleTypes\VehicleTypesInterface as VehicleTypesInterface ;
 
 class TransportersIO extends ServiceProvider{
 

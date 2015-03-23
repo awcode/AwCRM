@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Providers;
+<?php namespace AwCore\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'AwCRM\Http\Controllers';
+	protected $namespace = 'AwCore\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.

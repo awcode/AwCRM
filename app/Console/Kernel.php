@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Console;
+<?php namespace AwCore\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -11,7 +11,7 @@ class Kernel extends ConsoleKernel {
 	 * @var array
 	 */
 	protected $commands = [
-		'AwCRM\Console\Commands\Inspire',
+		'AwCore\Console\Commands\Inspire',
 	];
 
 	/**

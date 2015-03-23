@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Providers;
+<?php namespace AwCore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

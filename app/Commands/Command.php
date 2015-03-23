@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Commands;
+<?php namespace AwCore\Commands;
 
 abstract class Command {
 

@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: AwCRM
-        psr4_prefix: AwCRM
+        namespace: AwCore
+        psr4_prefix: AwCore
         src_path: app

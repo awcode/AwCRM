@@ -1,5 +1,5 @@
 <?php 
-namespace AwCRM\Modules\TransportersIO\Repositories\Cargo;
+namespace AwCore\Modules\TransportersIO\Repositories\Cargo;
 
 interface CargoInterface {
 	 public function all();

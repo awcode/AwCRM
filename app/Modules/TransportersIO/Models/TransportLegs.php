@@ -1,5 +1,5 @@
 <?php
-namespace AwCRM\Modules\TransportersIO\Models;
+namespace AwCore\Modules\TransportersIO\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;

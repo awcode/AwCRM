@@ -1,5 +1,5 @@
 <?php
-namespace AwCRM\Http\Controllers;
+namespace AwCore\Http\Controllers;
 
 use Repositories\User\UserInterface as UserInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
