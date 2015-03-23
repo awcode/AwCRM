@@ -1,4 +1,4 @@
-<?php namespace AwCRM;
+<?php namespace AwCore;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

@@ -1,4 +1,4 @@
-<?php namespace AwCRM\Http;
+<?php namespace AwCore\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'AwCRM\Http\Middleware\VerifyCsrfToken',
+		'AwCore\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -24,9 +24,9 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'AwCRM\Http\Middleware\Authenticate',
+		'auth' => 'AwCore\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'AwCRM\Http\Middleware\RedirectIfAuthenticated',
+		'guest' => 'AwCore\Http\Middleware\RedirectIfAuthenticated',
 	];
 
 }

@@ -5,10 +5,24 @@ namespace Repositories;
 use Schema;
 use Input;
 use DB;
+use Module;
+use App;
 use Doctrine\DBAL\Driver\PDOMySql\Driver;
 
 abstract class AbstractEloquentRepository {
- 
+	protected $modules;
+	
+	public function __construct(){
+		$modules = Module::enabled();
+		if(is_array($modules) && count($modules)){
+			foreach($modules as $module){
+				$slug = $module['slug'];
+				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+				$this->modules[$slug] = App::make($path);
+			}
+		}
+	}	
+	
 	/**
 	* Return all users
 	*

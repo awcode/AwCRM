@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
 	'Illuminate\Contracts\Http\Kernel',
-	'AwCRM\Http\Kernel'
+	'AwCore\Http\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Console\Kernel',
-	'AwCRM\Console\Kernel'
+	'AwCore\Console\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
-	'AwCRM\Exceptions\Handler'
+	'AwCore\Exceptions\Handler'
 );
 
 /*

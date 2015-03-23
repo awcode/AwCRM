@@ -5,18 +5,19 @@ use Triggers;
 use Repositories\AbstractEloquentRepository;
 
 class EloquentTriggersRepository extends AbstractEloquentRepository implements TriggersInterface { 
-  /**
-   * @var Model
-   */
-  protected $model;
+  	/**
+   	* @var Model
+   	*/
+  	protected $model;
  
-  /**
-   * Constructor
-   */
-  public function __construct(Triggers $model)
-  {
-    $this->model = $model;
-  }
+  	/**
+   	* Constructor
+   	*/
+  	public function __construct(Triggers $model)
+  	{
+		parent::__construct();
+		$this->model = $model;
+	}
  
  
 }

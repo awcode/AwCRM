@@ -1,5 +1,5 @@
 <?php
-namespace AwCRM\Http\Controllers;
+namespace AwCore\Http\Controllers;
 
 use Repositories\Customer\CustomerInterface as CustomerInterface ;
 use Repositories\Contact\ContactInterface as ContactInterface ;

@@ -1,6 +1,6 @@
-<?php namespace AwCRM\Http\Controllers\Auth;
+<?php namespace AwCore\Http\Controllers\Auth;
 
-use AwCRM\Http\Controllers\Controller;
+use AwCore\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;

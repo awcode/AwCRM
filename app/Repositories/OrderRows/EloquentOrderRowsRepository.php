@@ -3,7 +3,6 @@ namespace Repositories\OrderRows;
 
 use OrderRows;
 use Repositories\AbstractEloquentRepository;
-use TransportersIO\Classes\TransportersIO;
 
 class EloquentOrderRowsRepository extends AbstractEloquentRepository implements OrderRowsInterface { 
 	/**
@@ -14,9 +13,9 @@ class EloquentOrderRowsRepository extends AbstractEloquentRepository implements 
 	/**
 	* Constructor
 	*/
-	public function __construct(OrderRows $model, TransportersIO $transporters)
+	public function __construct(OrderRows $model)
 	{
-		$this->transporters = $transporters;
+		parent::__construct();
 		$this->model = $model;
 	}
 	
@@ -41,7 +40,10 @@ class EloquentOrderRowsRepository extends AbstractEloquentRepository implements 
 			foreach($rows as $k=>$row){
 				$rows[$k]['title'] = 'Item '.$row['order_row_id'];
 				if($row['order_row_type'] == "transportersio"){
-					$rows[$k] = $this->transporters->prepareRow($row);
+					if(isset($this->modules["TransportersIO"])){
+						$rows[$k] = $this->modules['TransportersIO']->prepareRow($row);
+					
+					}
 				}elseif(is_string($row['order_row_object'])){
 					$obj = @unserialize($row['order_row_object']);
 					if(is_array($obj)){

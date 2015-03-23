@@ -1,5 +1,5 @@
 <?php
-namespace AwCRM\Http\Controllers;
+namespace AwCore\Http\Controllers;
 use Repositories\Address\AddressInterface as AddressInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
 use URL;

@@ -1,6 +1,7 @@
-<?php
-namespace AwCRM\Http\Controllers;
+<?php 
+namespace AwCore\Modules\TransportersIO\Controllers;
 
+use AwCore\Http\Controllers\BaseController as BaseController;
 use Repositories\Customer\CustomerInterface as CustomerInterface ;
 use Repositories\Contact\ContactInterface as ContactInterface ;
 use Repositories\User\UserInterface as UserInterface ;
@@ -8,7 +9,7 @@ use Repositories\Address\AddressInterface as AddressInterface ;
 use Repositories\Event\EventInterface as EventInterface ;
 use Repositories\Orders\OrdersInterface as OrdersInterface ;
 use Repositories\OrderRows\OrderRowsInterface as OrderRowsInterface ;
-use TransportersIO\Classes\TransportersIO as TransportersIO;
+use AwCore\Modules\TransportersIO\TransportersIO as TransportersIO;
 
 use URL;
 use Validator;
@@ -20,6 +21,7 @@ class TransportersIOController extends BaseController
 	protected $layout = "layouts.popup";
 
 	public function __construct(OrderRowsInterface $orderrows, OrdersInterface $orders, AddressInterface $address, EventInterface $event, TransportersIO $transportersIO) {
+
 		parent::__construct($event);
 		$this->orderrows = $orderrows;
 		$this->orders = $orders;
@@ -28,6 +30,7 @@ class TransportersIOController extends BaseController
 		$this->event = $event;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->breadcrumbs[] = array(URL::to('order'), "Orders");
+    	
 	}
 	
 	public function getIndex() {
@@ -76,7 +79,7 @@ class TransportersIOController extends BaseController
 
     public function getNewrow() {
     	
-        $this->doLayout("orderrows.edittransport")
+        $this->doLayout("newrow", "TransportersIOView")
         		->with("order", $this->orders->getEmptyArr())
            		->with("orderrows", $this->orderrows->getEmptyArr());
     }

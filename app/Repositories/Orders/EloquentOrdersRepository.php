@@ -22,6 +22,7 @@ class EloquentOrdersRepository extends AbstractEloquentRepository implements Ord
 	*/
 	public function __construct(Orders $model, OrderRows $orderrowsmodel, OrderRowsInterface $orderrows, CustomerInterface $customer, ContactInterface $contact)
 	{
+		parent::__construct();
 		$this->model = $model;
 		$this->customer = $customer;
 		$this->orderrows = $orderrows;
