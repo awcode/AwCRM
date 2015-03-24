@@ -8,7 +8,7 @@ AwCore aims to solve this problem by providing a modular building block allowing
 
 If you are planning to develop a business based Application on Laravel then AwCore my be the tool you are after.
 
-==Planned components==
+===Planned components===
  - Admin interface
  - Customers
  - Orders
