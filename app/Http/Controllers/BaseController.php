@@ -81,7 +81,10 @@ class BaseController extends Controller {
 		$this->layout->breadcrumbs = View::make("layouts.breadcrumbs")
 				->with("breadcrumbs", $this->breadcrumbs);
 		
-		$this->layout->menu = View::make("layouts.".$this->menu."menu");
+		$menucontent = $this->modulesFilterHTML("","getMenu_".$this->menu);
+		
+		$this->layout->menu = View::make("layouts.".$this->menu."menu")
+				->with("menuContent", $menucontent);
 		
 		if($path){
 			

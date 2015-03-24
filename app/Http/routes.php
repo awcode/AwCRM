@@ -13,9 +13,6 @@
 
 Route::group(['middleware' => 'auth'], function()
 {
-	Route::controller('customer', 'CustomerController');
-	Route::controller('customercontact', 'CustomerContactController');
-	Route::controller('customeraddress', 'CustomerAddressController');
 
 	Route::controller('event', 'EventController');
 
