@@ -16,16 +16,7 @@
 							</ul>
 						</li>
 
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-users"></i>
-								<span class="hidden-xs">Customers</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>{!! HTML::link('customer', 'View Customers') !!}</li>
-								<li>{!! HTML::link('customer/new', 'Add Customer') !!}</li>
-							</ul>
-						</li>
+						{!! $menuContent !!}
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle">
