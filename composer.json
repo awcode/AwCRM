@@ -1,7 +1,7 @@
 {
 	"name": "awcode/aw-core",
 	"description": "AwCore base platform",
-	"keywords": ["awcode", "awcore"],
+	"keywords": ["awcode", "awcore", "aw-core"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
