@@ -149,7 +149,6 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		
 		//Repositories
-		'Repositories\Customer\CustomerServiceProvider',
 		'Repositories\Address\AddressServiceProvider',
 		'Repositories\Contact\ContactServiceProvider',
 		'Repositories\Event\EventServiceProvider',
