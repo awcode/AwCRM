@@ -21,8 +21,6 @@ Route::group(['middleware' => 'auth'], function()
 
 	Route::controller('staff', 'StaffController');
 
-	Route::controller('orders', 'OrderController');
-	Route::controller('orderrows', 'OrderRowsController');
 	
 	Route::controller('settings', 'SettingsController');
 

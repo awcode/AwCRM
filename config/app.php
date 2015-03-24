@@ -156,8 +156,6 @@ return [
 		'Repositories\EventTypes\EventTypesServiceProvider',
 		'Repositories\User\UserServiceProvider',
 		'Repositories\Country\CountryServiceProvider',
-		'Repositories\Orders\OrdersServiceProvider',
-		'Repositories\OrderRows\OrderRowsServiceProvider',
 		'Repositories\Payments\PaymentsServiceProvider',
 		'Repositories\PaymentAllocation\PaymentAllocationServiceProvider',
 		'Repositories\Triggers\TriggersServiceProvider',

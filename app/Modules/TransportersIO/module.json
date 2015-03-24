@@ -1,8 +1,0 @@
-{
-    "slug": "TransportersIO",
-    "name": "Transporters IO",
-    "description": "Module for transport bookings",
-    "version": "1.0",
-    "order": 1,
-    "enabled": true
-}
