@@ -1,0 +1,10 @@
+{
+    "name": "awcode/aw-core-module-orders",
+    "type": "laravel-library",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+     "extra": {
+        "installer-name": "Orders"
+    }
+}

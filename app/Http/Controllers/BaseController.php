@@ -37,11 +37,7 @@ class BaseController extends Controller {
 		if(is_array($modules) && count($modules)){
 			foreach($modules as $module){
 				$slug = $module['slug'];
-<<<<<<< HEAD
-				$path = "\AwCRM\Modules\\".$slug."\\".$slug."";
-=======
 				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
->>>>>>> 94ed90bd3d41d36752d78a9ce7f77554d2bcf7ad
 				$this->modules[$slug] = App::make($path);
 				if(isset($this->modules[$slug]->filters) && is_array($this->modules[$slug]->filters) && count($this->modules[$slug]->filters)){
 					foreach($this->modules[$slug]->filters as $filter=>$method){
@@ -71,11 +67,7 @@ class BaseController extends Controller {
 			
 			$this->layout = View::make($this->layout)
 				->with("alert_count", $this->alert_count)
-<<<<<<< HEAD
-				->with("product_name", $this->modulesFilterHTML("AwCRM","setProductName"));
-=======
 				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"));
->>>>>>> 94ed90bd3d41d36752d78a9ce7f77554d2bcf7ad
 		}
 		
 	}

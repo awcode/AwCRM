@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost/AwCore/public',
+	'url' => 'http://localhost/AwCRM/public',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'sSomeRandomString'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
