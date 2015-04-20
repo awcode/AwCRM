@@ -5,16 +5,7 @@
 							</a>
 						</li>
 						
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-shopping-cart"></i>
-								<span class="hidden-xs">Orders</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>{!! HTML::link('orders', 'View Orders') !!}</li>
-								<li>{!! HTML::link('orders/new', 'Add Order') !!}</li>
-							</ul>
-						</li>
+						
 
 						{!! $menuContent !!}
 

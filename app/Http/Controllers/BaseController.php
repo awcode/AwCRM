@@ -25,11 +25,12 @@ class BaseController extends Controller {
 	protected $filters;
 	protected $actions;
 	
-	public function __construct(EventInterface $event) {
+	public function __construct() {
+		/*[[TODO need to make this work again but using modules]]
 		if($event && Auth::check()) {
 			$this->event = $event;
 			$this->alert_count = $this->event->getAlertCount(Auth::user()->id);
-		}
+		}*/
     	$this->title = str_replace(array("Controller", "AwCore"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
