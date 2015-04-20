@@ -11,7 +11,8 @@
 		"caffeinated/modules": "~1.0",
 		"wikimedia/composer-merge-plugin": "~1.0",
 		"mnsami/composer-custom-directory-installer": "1.0.*",
-		"awcode/aw-core-module-orders": "~0.0.5"
+		"awcode/aw-core-module-orders": "~0.0.5",
+		"awcode/aw-core-module-customers": "~0.0.2"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -57,7 +58,7 @@
 		    ]
 		},
 		 "installer-paths": {
-            "app/Modules/{$name}/": ["awcode/aw-core-module-orders"]
+            "app/Modules/{$name}/": ["awcode/aw-core-module-orders", "awcode/aw-core-module-customers"]
         }
 		
 	}
