@@ -58,6 +58,6 @@ class AddressController extends BaseController
     private function _update() {
     	$arr = $this->address->addUpdatePost();
         
-        return Redirect::to($_SERVER{'HTTP_REFERER'])->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
+        return Redirect::to($_SERVER['HTTP_REFERER'])->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
     }
 }
