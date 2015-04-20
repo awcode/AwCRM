@@ -12,12 +12,4 @@
 							</a>
 						</li>
 
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-calendar"></i>
-								<span class="hidden-xs">Events</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>{!! HTML::link('settings/eventtypes', 'Event Types') !!}</li>
-							</ul>
-						</li>
+						{!! $menuContent !!}

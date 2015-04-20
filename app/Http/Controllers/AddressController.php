@@ -1,55 +1,53 @@
 <?php
 namespace AwCore\Http\Controllers;
 use Repositories\Address\AddressInterface as AddressInterface ;
-use Repositories\Event\EventInterface as EventInterface ;
 use URL;
 use Validator;
 use Input;
 use Redirect;
-use Customer;
 
 class AddressController extends BaseController
 {
 	protected $layout = "layouts.main";
 
-	public function __construct(AddressInterface $address, EventInterface $event) {
+	public function __construct(AddressInterface $address) {
 		parent::__construct($event);
 		$this->address = $address;
-		$this->event = $event;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
+    	$this->link_type="";
 	}
 	
 	public function getIndex() {
         //Cant access directly
     }
     
-    public function getEdit($id, $cust_id) {
-        $cust = Customer::find($cust_id);
+    public function getEdit($id, $link_id) {
         $address = $this->address->find($id);
         $allcountry = $this->address->allCountrySelectArr();
         
         $this->doLayout("address.edit")
                 ->with("address", $address)
-                ->with("cust_id", $cust_id)
+                ->with("link_id", $link_id)
+                ->with("link_type", $this->link_type)
                 ->with("allcountry", $allcountry);
         
-        $this->title = "Edit ".$cust->company_name;
+        $this->title = "Edit Address";
     }
  
-    public function getDelete($id, $cust_id) {
+    public function getDelete($id) {
         $record = $this->address->find($id);
         $record->delete();
-        return Redirect::to('/customer')->with('message', 'Customer deleted!');
     }
  
-    public function getNew($cust_id) {
+    public function getNew($link_id) {
         $this->doLayout("address.edit")
         		->with("address", $this->address->getEmptyArr())
-        		->with("cust_id", $cust_id);
+                ->with("link_id", $link_id)
+                ->with("link_type", $this->link_type);
     }
  
- 	public function postEdit($id, $cust_id){
+ 	public function postEdit($id){
  		return $this->_update($id);
  	}
  	
@@ -60,6 +58,6 @@ class AddressController extends BaseController
     private function _update() {
     	$arr = $this->address->addUpdatePost();
         
-        return Redirect::to('/customer/view/'.$arr['cust_id'])->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
+        return Redirect::to($_SERVER{'HTTP_REFERER'])->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
     }
 }

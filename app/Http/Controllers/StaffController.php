@@ -2,7 +2,6 @@
 namespace AwCore\Http\Controllers;
 
 use Repositories\User\UserInterface as UserInterface ;
-use Repositories\Event\EventInterface as EventInterface ;
 use URL;
 use Validator;
 use Input;
@@ -11,10 +10,9 @@ use Redirect;
 class StaffController extends BaseController {
     protected $layout = "layouts.main";
 
-	public function __construct(UserInterface $user, EventInterface $event) {
-		parent::__construct($event);
+	public function __construct(UserInterface $user) {
+		parent::__construct();
 		$this->user = $user;
-		$this->event = $event;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     	$this->breadcrumbs[] = array(URL::to('staff'), "Staff");

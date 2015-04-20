@@ -87,24 +87,7 @@
 						</div>
 						<div class="col-xs-4 col-sm-8 top-panel-right">
 							<ul class="nav navbar-nav pull-right panel-menu">
-								<li class="hidden-xs">
-									<a href="{{URL::to('event/alerts')}}" class="modal-link">
-										<i class="fa fa-bell"></i>
-										<span class="badge">{{$alert_count}}</span>
-									</a>
-								</li>
-								<li class="hidden-xs">
-									<a href="{{URL::to('event')}}">
-										<i class="fa fa-calendar"></i>
-										<span class="badge"></span>
-									</a>
-								</li>
-								<li class="hidden-xs">
-									<a href="{{URL::to('event/messages')}}">
-										<i class="fa fa-envelope"></i>
-										<span class="badge"></span>
-									</a>
-								</li>
+								{!! $headMenu !!}
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 										<div class="avatar">

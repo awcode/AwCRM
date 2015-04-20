@@ -26,11 +26,6 @@ class BaseController extends Controller {
 	protected $actions;
 	
 	public function __construct() {
-		/*[[TODO need to make this work again but using modules]]
-		if($event && Auth::check()) {
-			$this->event = $event;
-			$this->alert_count = $this->event->getAlertCount(Auth::user()->id);
-		}*/
     	$this->title = str_replace(array("Controller", "AwCore"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
@@ -65,10 +60,12 @@ class BaseController extends Controller {
 		
 		if ( ! is_null($this->layout))
 		{
+			$headMenu = $this->modulesFilterHTML("","getMenu_head");
 			
 			$this->layout = View::make($this->layout)
 				->with("alert_count", $this->alert_count)
-				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"));
+				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"))
+				->with("headMenu", $headMenu);
 		}
 		
 	}
@@ -83,6 +80,7 @@ class BaseController extends Controller {
 				->with("breadcrumbs", $this->breadcrumbs);
 		
 		$menucontent = $this->modulesFilterHTML("","getMenu_".$this->menu);
+		
 		
 		$this->layout->menu = View::make("layouts.".$this->menu."menu")
 				->with("menuContent", $menucontent);

@@ -20,7 +20,8 @@
 {!! Form::text("position", $contact['position'] , array('class'=>'form-control')) !!}
 <br>
 
-{!! Form::hidden('cust_id', $cust_id) !!}
+{!! Form::hidden('link_id', $link_id) !!}
+{!! Form::hidden('link_type', $link_type) !!}
 {!! Form::hidden('contact_id', $contact['contact_id']) !!}
 {!! Form::submit('Save', array('class'=>'btn btn-default')) !!}
 {!! HTML::linkAction("CustomerController@getView", 'Cancel', array($cust_id), array('class'=>'btn')) !!}
