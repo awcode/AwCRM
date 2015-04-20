@@ -14,7 +14,7 @@
 Route::group(['middleware' => 'auth'], function()
 {
 
-	Route::controller('event', 'EventController');
+	
 
 	Route::controller('staff', 'StaffController');
 

@@ -151,8 +151,6 @@ return [
 		//Repositories
 		'Repositories\Address\AddressServiceProvider',
 		'Repositories\Contact\ContactServiceProvider',
-		'Repositories\Event\EventServiceProvider',
-		'Repositories\EventTypes\EventTypesServiceProvider',
 		'Repositories\User\UserServiceProvider',
 		'Repositories\Country\CountryServiceProvider',
 		'Repositories\Payments\PaymentsServiceProvider',
