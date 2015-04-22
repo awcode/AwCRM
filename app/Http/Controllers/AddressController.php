@@ -41,6 +41,8 @@ class AddressController extends BaseController
     }
  
     public function getNew($link_id) {
+        $allcountry = $this->address->allCountrySelectArr();
+
         $this->doLayout("address.edit")
         		->with("address", $this->address->getEmptyArr())
                 ->with("link_id", $link_id)
