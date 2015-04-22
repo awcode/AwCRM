@@ -11,7 +11,7 @@ class AddressController extends BaseController
 	protected $layout = "layouts.main";
 
 	public function __construct(AddressInterface $address) {
-		parent::__construct($event);
+		parent::__construct();
 		$this->address = $address;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
