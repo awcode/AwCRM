@@ -44,7 +44,8 @@ class AddressController extends BaseController
         $this->doLayout("address.edit")
         		->with("address", $this->address->getEmptyArr())
                 ->with("link_id", $link_id)
-                ->with("link_type", $this->link_type);
+                ->with("link_type", $this->link_type)
+                ->with("allcountry", $allcountry);
     }
  
  	public function postEdit($id){
