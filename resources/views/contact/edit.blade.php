@@ -24,6 +24,6 @@
 {!! Form::hidden('link_type', $link_type) !!}
 {!! Form::hidden('contact_id', $contact['contact_id']) !!}
 {!! Form::submit('Save', array('class'=>'btn btn-default')) !!}
-{!! HTML::linkAction("CustomerController@getView", 'Cancel', array($cust_id), array('class'=>'btn')) !!}
+{!! HTML::linkAction($_SERVER['HTTP_REFERER'], 'Cancel', null, array('class'=>'btn')) !!}
 
 {!! Form::close() !!}
