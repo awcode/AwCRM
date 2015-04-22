@@ -14,7 +14,6 @@ class ContactController extends BaseController
 	public function __construct(ContactInterface $contact) { 
 		parent::__construct();
 		$this->contact = $contact;
-		$this->event = $event;
 		$this->link_type = "";
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
