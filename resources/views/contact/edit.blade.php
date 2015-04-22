@@ -22,6 +22,7 @@
 
 {!! Form::hidden('link_id', $link_id) !!}
 {!! Form::hidden('link_type', $link_type) !!}
+{!! Form::hidden('return_url', $_SERVER['HTTP_REFERER']) !!}
 {!! Form::hidden('contact_id', $contact['contact_id']) !!}
 {!! Form::submit('Save', array('class'=>'btn btn-default')) !!}
 {!! HTML::link($_SERVER['HTTP_REFERER'], 'Cancel', array('class'=>'btn')) !!}

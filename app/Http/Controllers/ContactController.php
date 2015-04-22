@@ -59,6 +59,8 @@ class ContactController extends BaseController
     private function _update() {
     	$arr = $this->contact->addUpdatePost();
         
-        return Redirect::to($_SERVER['HTTP_REFERER'])->with('message', 'Contact '.(($arr['saveaction']=="update")?'Updated':'added').'!');
+        if(Input::get('return_url')){$return = Input::get('return_url');}
+        else{$return = $_SERVER['HTTP_REFERER'];}
+        return Redirect::to($return)->with('message', 'Contact '.(($arr['saveaction']=="update")?'Updated':'added').'!');
     }
 }
