@@ -11,7 +11,7 @@ use Doctrine\DBAL\Driver\PDOMySql\Driver;
 
 abstract class AbstractEloquentRepository {
 	protected $modules;
-	protected $setWhere = null;
+	protected $Where = null;
 	
 	public function __construct(){
 		if(!isset($_ENV['modules_loading'])){
@@ -79,8 +79,8 @@ abstract class AbstractEloquentRepository {
 	}
 	protected function _setWhere($key="", $type="", $value="")
 	{
-		if($this->setWhere == null){$this->setWhere =  $this->model;}
-		$this->setWhere->where($key, $type, $value);
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->where($key, $type, $value);
 		return $this;
 	}
 	
@@ -90,8 +90,10 @@ abstract class AbstractEloquentRepository {
 	}
 	protected function _getWhere($key="", $type="", $value="")
 	{
-		$this->_setWhere($key, $type, $value);
-		return $this->setWhere->get()->toArray();
+		$this->setWhere($key, $type, $value);
+		$result = $this->Where->get()->toArray();
+		$this->Where = NULL;
+		return $result;
 	}
 	
 	public function save(){
