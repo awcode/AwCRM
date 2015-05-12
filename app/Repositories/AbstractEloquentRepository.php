@@ -81,7 +81,7 @@ abstract class AbstractEloquentRepository {
 	{
 		if($this->setWhere == null){$this->setWhere =  $this->model;}
 		$this->setWhere->where($key, $type, $value);
-		return;
+		return $this;
 	}
 	
 	public function getWhere($key="", $type="", $value="")
