@@ -30,12 +30,16 @@
 							<th>Created</th>
 							<th>Last Login</th>
 							<th>Edit</th>
+							@if(is_array($staff_list_view) && isset($staff_list_view['row_head']))
+							{!! $staff_list_view['row_head'] !!}
+							@endif
 						</tr>
 					</thead>
 					<tbody>
 						
-
+<?php $row_cnt = 0;?>
 @foreach($users as $user)
+<?php $row_cnt++; ?>
 						<tr>
 							<td>{!! HTML::linkAction("StaffController@getView", $user['firstname'], array($user['id'])) !!}</td>
 							<td>{!! HTML::linkAction("StaffController@getView", $user['lastname'], array($user['id'])) !!}</td>
@@ -43,6 +47,9 @@
 							<td>{{$user['created_at']}}</td>
 							<td>{{$user['lastlogin_date']}}</td>
 							<td><a href="{{URL::to('staff/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a></td>
+							@if(is_array($staff_list_view) && isset($staff_list_view['row_body']) && isset($staff_list_view['row_body'][$row_cnt]))
+							{!! $staff_list_view['row_body'][$row_cnt] !!}
+							@endif
 						</tr>
 
 @endforeach

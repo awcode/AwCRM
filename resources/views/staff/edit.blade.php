@@ -12,6 +12,8 @@
 	{!! Form::text('email', $staff['email'], array('class'=>' form-control', 'placeholder'=>'Email Address')) !!}
 	{!! Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) !!}
 	{!! Form::password('password_confirmation', array('class'=>' form-control', 'placeholder'=>'Confirm Password')) !!}
-
+	
+	{!! $staff_edit_view !!}
+	
 	{!! Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))!!}
 {!! Form::close() !!}

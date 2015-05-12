@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-		
+			{!! $staff_single_view !!}
 	</div>
 	<div class="col-xs-4">
 		
