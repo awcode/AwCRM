@@ -29,7 +29,7 @@ class StaffController extends BaseController {
 
 	public function getView($id){
 		$staff = $this->user->find($id);
-		$staff_single_view  = $this->modulesFilterHTML("", "staffSingleView", $id);
+		$staff_single_view  = $this->modulesFilterHTML("", "staffSingleView", $staff);
 		
 		$this->doLayout('staff.view')
                 ->with("staff", $staff)
@@ -47,7 +47,7 @@ class StaffController extends BaseController {
 	
 	public function getEdit($id) {
 		$staff = $this->user->find($id);
-		$staff_edit_view  = $this->modulesFilterHTML("", "staffEditView", $id);
+		$staff_edit_view  = $this->modulesFilterHTML("", "staffEditView", $staff);
 		
 		$this->doLayout('staff.edit')
         		->with("staff", $staff)
@@ -73,7 +73,7 @@ class StaffController extends BaseController {
  
 		if ($validator->passes()) {
 		   	$this->user->addUser();
-			$this->modulesAction("staffEditSave");
+			$this->modulesAction("staffEditSave", $this->user);
 		 
 			return Redirect::to('/staff')->with('message', 'Thanks for registering!');
 		} else {
