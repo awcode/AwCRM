@@ -33,7 +33,7 @@ class BaseController extends Controller {
 		if(is_array($modules) && count($modules)){
 			foreach($modules as $module){
 				$slug = $module['slug'];
-				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+				$path = "\AwCore\Modules\\".ucfirst($slug)."\\".ucfirst($slug)."";
 				$this->modules[$slug] = App::make($path);
 				if(isset($this->modules[$slug]->filters) && is_array($this->modules[$slug]->filters) && count($this->modules[$slug]->filters)){
 					foreach($this->modules[$slug]->filters as $filter=>$method){
