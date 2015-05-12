@@ -13,7 +13,25 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('UsersTableSeeder');
-		$this->call('CustomersTableSeeder');
+		if(!isset($_ENV['modules_loading'])){
+			$modules = Module::enabled();
+			if(is_array($modules) && count($modules)){
+				$_ENV['modules_loading'] = true;
+				foreach($modules as $module){
+					$slug = $module['slug'];
+					$path = app_path()."\Modules\\".ucfirst($slug)."\Database\Seeds\\";
+					if(isdir($path)){
+						$seeds = scandir($path);
+						if(is_array($seeds) && count($seeds)){
+							foreach($seeds as $seed){
+								$this->call(str_replace(".php", "", $seed));
+							}
+						}
+					}
+					
+				}
+			}
+		}
 	}
 
 }

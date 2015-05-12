@@ -19,7 +19,7 @@ abstract class AbstractEloquentRepository {
 				$_ENV['modules_loading'] = true;
 				foreach($modules as $module){
 					$slug = $module['slug'];
-					$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+					$path = "\AwCore\Modules\\".ucfirst($slug)."\\".ucfirst($slug)."";
 					$this->modules[$slug] = App::make($path);
 				}
 			}
@@ -84,7 +84,11 @@ abstract class AbstractEloquentRepository {
 	public function save(){
 		return $this->model->save();
 	}
-
+	
+	public function create($arr){
+		$this->model->unguard();
+		return $this->model->create($arr);
+	}
 	
 	public function addUpdatePost(){
 		return $this->_addUpdatePost();
