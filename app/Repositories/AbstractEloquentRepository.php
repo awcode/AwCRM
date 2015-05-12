@@ -205,7 +205,7 @@ abstract class AbstractEloquentRepository {
 		
 		if(is_array($arr) && count($arr)){
 			foreach($arr as $k=>$v){
-				$flat_arr[$k] = $v['config_value'];
+				if(isset($v['config_value'])) $flat_arr[$k] = $v['config_value'];
 			}
 		}
 		return $flat_arr;
