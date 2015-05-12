@@ -39,7 +39,6 @@
 						
 <?php $row_cnt = 0;?>
 @foreach($users as $user)
-<?php $row_cnt++; ?>
 						<tr>
 							<td>{!! HTML::linkAction("StaffController@getView", $user['firstname'], array($user['id'])) !!}</td>
 							<td>{!! HTML::linkAction("StaffController@getView", $user['lastname'], array($user['id'])) !!}</td>
@@ -52,6 +51,7 @@
 							@endif
 						</tr>
 
+<?php $row_cnt++; ?>
 @endforeach
 					</tbody>
 					<tfoot>
