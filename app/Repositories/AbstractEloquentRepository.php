@@ -90,8 +90,8 @@ abstract class AbstractEloquentRepository {
 	}
 	protected function _getWhere($key="", $type="", $value="")
 	{
-		$run = $this->_setWhere($key, $type, $value);
-		return $run->get()->toArray();
+		$this->_setWhere($key, $type, $value);
+		return $this->setWhere->get()->toArray();
 	}
 	
 	public function save(){
