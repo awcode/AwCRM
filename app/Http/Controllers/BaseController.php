@@ -132,11 +132,11 @@ class BaseController extends Controller {
 	}
 
 	protected function modulesAction($action, $options=null){
-		if(isset($this->filters[$filter]) && is_array($this->filters[$filter]) && count($this->filters[$filter])){
+		if(isset($this->actions[$action]) && is_array($this->actions[$action]) && count($this->actions[$action])){
 			$response = array("cnt"=>0);
-			foreach($this->filters[$filter] as $filter_arr){
-				if(method_exists($this->modules[$filter_arr['module']], $filter_arr['method'])){
-					$this->modules[$filter_arr['module']]->$filter_arr['method']($response, $options);
+			foreach($this->actions[$action] as $action_arr){
+				if(method_exists($this->modules[$action_arr['module']], $action_arr['method'])){
+					$this->modules[$action_arr['module']]->$action_arr['method']($response, $options);
 				}
 			}
 		}
