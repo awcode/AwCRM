@@ -60,5 +60,13 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserI
 		}
 		return $arr;
 	}
+	
+	public function getModel(){
+		return $this->model;
+	}
+ 
+	public function rules(){
+		return $this->model->rules();
+	}
  
 }

@@ -69,7 +69,7 @@ class StaffController extends BaseController {
  	
  	public function _update($id=0) {
 		$this->modulesAction("staffEditValidate");
-		$rules = $this->user->getRules();
+		$rules = $this->user->rules();
 		if(!$id){
 			$rules['password']='required|between:6,22|confirmed';
 			$rules['password_confirmation']='required|between:6,22';
@@ -80,12 +80,13 @@ class StaffController extends BaseController {
 			if($id){
 		   		$this->user->updateUser($id);
 		   	}else{
-		   		$this->user->addUser();
+		   		$id = $this->user->addUser();
 		   	}
-			$this->modulesAction("staffEditSave", $this->user);
+			$this->modulesAction("staffEditSave", $this->user->getModel()->find($id));
 		 
 			return Redirect::to('/staff')->with('message', 'Thanks for registering!');
 		} else {
+			print_r( $validator->errors()->all());die();
 		    return Redirect::to('/staff')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
 		}  
 	}

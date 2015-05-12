@@ -30,12 +30,15 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 */
 	protected $hidden = array('password', 'remember_token');
 	
-	public $rules = array(
-	'main'=>  array(
-		'firstname'=>'required|alpha|min:2',
-		'lastname'=>'required|alpha|min:2',
-		'email'=>'required|email|unique:users'
-    ));
-
 	public $timestamps = true;
+	
+	public function rules()
+	{
+		return [
+			'firstname'=>'required|alpha|min:2',
+			'lastname'=>'required|alpha|min:2',
+			'email'=>'required|email|unique:users,id,'.Request::get('id')
+		];
+	}	
+
 }
