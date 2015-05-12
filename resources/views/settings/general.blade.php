@@ -9,7 +9,7 @@
 		@endforeach
 	</ul>
 	
-	@if(isset($config['primary_currency'])
+	@if(isset($config['primary_currency']))
 	{!! Form::label('primary_currency', 'Currency ID')  !!}
 	{!! Form::text('primary_currency', $config['primary_currency'], array('class'=>' form-control')) !!}
 	{!! Form::hidden('config_fields[]','primary_currency') !!}
