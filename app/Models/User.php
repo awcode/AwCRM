@@ -34,9 +34,7 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	'main'=>  array(
 		'firstname'=>'required|alpha|min:2',
 		'lastname'=>'required|alpha|min:2',
-		'email'=>'required|email|unique:users',
-		'password'=>'required|between:6,22|confirmed',
-		'password_confirmation'=>'required|between:6,22'
+		'email'=>'required|email|unique:users'
     ));
 
 	public $timestamps = true;

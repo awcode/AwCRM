@@ -32,6 +32,17 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserI
 		
 		return $user->user_id;
   	}
+  	
+  	public function updateUser($id){
+  		$user = $this->model->find($id);
+		$user->firstname = Input::get('firstname');
+		$user->lastname = Input::get('lastname');
+		$user->email = Input::get('email');
+		if(Input::get('password') != ""){$user->password = Hash::make(Input::get('password'));}
+		$user->save();
+		
+		return $user->user_id;
+  	}
   
   	public function recordLogin($id){
   		$user = $this->model->find($id);
