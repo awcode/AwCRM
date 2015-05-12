@@ -22,7 +22,13 @@ class HomeController extends BaseController {
 			$this->doLayout('home.login');
 		}else{
 			$this->breadcrumbs[] = array(URL::to('/'), "Dashboard");
-			$this->doLayout('home.dashboard');
+			$dashboard_header  = $this->modulesFilterHTML("", "dashboardHeader");
+			$dashboard_content = $this->modulesFilterHTML("", "dashboardContent");
+			$dashboard_footer = $this->modulesFilterHTML("", "dashboardFooter");
+			$this->doLayout('home.dashboard')
+				->with('dashboard_header', $dashboard_header)
+				->with('dashboard_content', $dashboard_content)
+				->with('dashboard_footer', $dashboard_footer);
 		}
 	}
 
