@@ -132,8 +132,8 @@ class BaseController extends Controller {
 	}
 
 	protected function modulesAction($action, $options=null){
+		$response = array("cnt"=>0);
 		if(isset($this->actions[$action]) && is_array($this->actions[$action]) && count($this->actions[$action])){
-			$response = array("cnt"=>0);
 			foreach($this->actions[$action] as $action_arr){
 				if(method_exists($this->modules[$action_arr['module']], $action_arr['method'])){
 					$this->modules[$action_arr['module']]->$action_arr['method']($response, $options);
