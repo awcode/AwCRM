@@ -20,7 +20,7 @@ class StaffController extends BaseController {
 	
 	public function getIndex(){
 		$users = $this->user->all();
-		$staff_list_view  = $this->modulesFilterHTML("", "staffListView");
+		$staff_list_view  = $this->modulesFilterHTML("", "staffListView", $users);
 		
 		$this->doLayout('staff.list')
                 ->with("users", $users)
