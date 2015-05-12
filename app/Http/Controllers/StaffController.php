@@ -69,12 +69,12 @@ class StaffController extends BaseController {
  	
  	public function _update($id=0) {
 		$this->modulesAction("staffEditValidate");
-		$rules = ;
+		$rules = $this->user->getRules();
 		if(!$id){
 			$rules['password']='required|between:6,22|confirmed';
 			$rules['password_confirmation']='required|between:6,22';
 		}
-		$validator = Validator::make(Input::all(), $this->user->getRules());
+		$validator = Validator::make(Input::all(), $rules);
  
 		if ($validator->passes()) {
 			if($id){
