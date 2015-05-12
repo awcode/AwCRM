@@ -20,27 +20,38 @@ class StaffController extends BaseController {
 	
 	public function getIndex(){
 		$users = $this->user->all();
+		$staff_list_view  = $this->modulesFilterHTML("", "staffListView");
+		
 		$this->doLayout('staff.list')
-                ->with("users", $users);
+                ->with("users", $users)
+                ->with("staff_list_view", $staff_list_view);
 	}
 
 	public function getView($id){
 		$staff = $this->user->find($id);
+		$staff_single_view  = $this->modulesFilterHTML("", "staffSingleView", $id);
+		
 		$this->doLayout('staff.view')
-                ->with("staff", $staff);
+                ->with("staff", $staff)
+                ->with("staff_single_view", $staff_view);
 	}
 
 	public function getNew() {
+		$staff_new_view  = $this->modulesFilterHTML("", "staffNewView");
+
 		$this->doLayout('staff.edit')
-        		->with("staff", $this->user->getEmptyArr());
+        		->with("staff", $this->user->getEmptyArr())
+                ->with("staff_new_view", $staff_new_view);
         
 	}
 	
 	public function getEdit($id) {
 		$staff = $this->user->find($id);
+		$staff_edit_view  = $this->modulesFilterHTML("", "staffEditView", $id);
 		
 		$this->doLayout('staff.edit')
-        		->with("staff", $staff);
+        		->with("staff", $staff)
+                ->with("staff_edit_view", $staff_edit_view);
 	}
 	
 	public function getDelete($id) {
@@ -57,10 +68,12 @@ class StaffController extends BaseController {
  	}
  	
  	public function _update() {
-       	$validator = Validator::make(Input::all(), $this->user->getRules());
+		$this->modulesAction("staffEditValidate");
+		$validator = Validator::make(Input::all(), $this->user->getRules());
  
 		if ($validator->passes()) {
 		   	$this->user->addUser();
+			$this->modulesAction("staffEditSave");
 		 
 			return Redirect::to('/staff')->with('message', 'Thanks for registering!');
 		} else {
