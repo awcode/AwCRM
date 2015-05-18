@@ -142,6 +142,8 @@ abstract class AbstractEloquentRepository {
         		$record->$col = $r;
         		if(($type == "datetime" && ($r[4] !='-') && strtotime($r))){
         			$record->$col = date("Y-m-d H:i:s", strtotime($r));
+        		}elseif(($type == "date" && ($r[4] !='-') && strtotime($r))){
+        			$record->$col = date("Y-m-d", strtotime($r));
         		}
         		$arr[$col] = $record->$col;
         	}else{
