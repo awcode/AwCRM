@@ -8,7 +8,7 @@
 
 	{!! HTML::style('/bower_components/devoops/plugins/bootstrap/bootstrap.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.css') !!}
-    {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') !!}
+    {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') !!}
     {!! HTML::style('//fonts.googleapis.com/css?family=Righteous') !!}
     {!! HTML::style('/bower_components/devoops/plugins/fancybox/jquery.fancybox.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/fullcalendar/fullcalendar.css') !!}
