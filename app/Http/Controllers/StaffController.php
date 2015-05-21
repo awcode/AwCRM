@@ -41,7 +41,7 @@ class StaffController extends BaseController {
 
 		$this->doLayout('staff.edit')
         		->with("staff", $this->user->getEmptyArr())
-                ->with("staff_new_view", $staff_new_view);
+                ->with("staff_edit_view", $staff_new_view);
         
 	}
 	
