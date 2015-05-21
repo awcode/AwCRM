@@ -40,8 +40,8 @@
 <?php $row_cnt = 0;?>
 @foreach($users as $user)
 						<tr>
-							<td>{!! HTML::linkAction("StaffController@getView", $user['firstname'], array($user['id'])) !!}</td>
-							<td>{!! HTML::linkAction("StaffController@getView", $user['lastname'], array($user['id'])) !!}</td>
+							<td>{!! HTML::linkAction("UserController@getView", $user['firstname'], array($user['id'])) !!}</td>
+							<td>{!! HTML::linkAction("UserController@getView", $user['lastname'], array($user['id'])) !!}</td>
 							<td>{{$user['email']}}</td>
 							<td>{{$user['created_at']}}</td>
 							<td>{{$user['lastlogin_date']}}</td>
