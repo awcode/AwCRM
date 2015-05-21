@@ -1,8 +1,7 @@
 <h1>General Settings</h1>
 
 {!! Form::open(array('url'=>'#', 'class'=>'form-signup')) !!}
-	<h2 class="form-signup-heading">Event Types</h2>
-
+	
 	<ul>
 		@foreach($errors->all() as $error)
 			<li>{!! $error !!}</li>
