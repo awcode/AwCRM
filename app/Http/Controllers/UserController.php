@@ -24,7 +24,7 @@ class UserController extends BaseController {
 		
 		$this->doLayout('user.list')
                 ->with("users", $users)
-                ->with("user_list_view", $staff_list_view);
+                ->with("user_list_view", $user_list_view);
 	}
 
 	public function getView($id){
