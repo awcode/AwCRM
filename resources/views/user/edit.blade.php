@@ -1,5 +1,5 @@
 {!! Form::open(array('url'=>'#', 'class'=>'form-signup')) !!}
-	<h2 class="form-signup-heading">Staff</h2>
+	<h2 class="form-signup-heading">User</h2>
 
 	<ul>
 		@foreach($errors->all() as $error)
@@ -7,13 +7,13 @@
 		@endforeach
 	</ul>
 
-	{!! Form::text('firstname', $staff['firstname'], array('class'=>' form-control', 'placeholder'=>'First Name')) !!}
-	{!! Form::text('lastname', $staff['lastname'], array('class'=>' form-control', 'placeholder'=>'Last Name')) !!}
-	{!! Form::text('email', $staff['email'], array('class'=>' form-control', 'placeholder'=>'Email Address')) !!}
+	{!! Form::text('firstname', $user['firstname'], array('class'=>' form-control', 'placeholder'=>'First Name')) !!}
+	{!! Form::text('lastname', $user['lastname'], array('class'=>' form-control', 'placeholder'=>'Last Name')) !!}
+	{!! Form::text('email', $user['email'], array('class'=>' form-control', 'placeholder'=>'Email Address')) !!}
 	{!! Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) !!}
 	{!! Form::password('password_confirmation', array('class'=>' form-control', 'placeholder'=>'Confirm Password')) !!}
 	
-	{!! $staff_edit_view !!}
+	{!! $user_edit_view !!}
 	
 	{!! Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))!!}
 {!! Form::close() !!}

@@ -1,4 +1,4 @@
-<p><i class="fa fa-plus"></i>{!! HTML::linkAction("StaffController@getNew", "Add new staff") !!}</p>
+<p><i class="fa fa-plus"></i>{!! HTML::linkAction("UserController@getNew", "Add new user") !!}</p>
 
 <div class="col-xs-12">
 		<div class="box">
@@ -29,8 +29,8 @@
 							<th>Email</th>
 							<th>Created</th>
 							<th>Last Login</th>
-							@if(is_array($staff_list_view) && isset($staff_list_view['row_head']))
-							{!! $staff_list_view['row_head'] !!}
+							@if(is_array($user_list_view) && isset($user_list_view['row_head']))
+							{!! $user_list_view['row_head'] !!}
 							@endif
 							<th>Edit</th>
 						</tr>
@@ -45,10 +45,10 @@
 							<td>{{$user['email']}}</td>
 							<td>{{$user['created_at']}}</td>
 							<td>{{$user['lastlogin_date']}}</td>
-							@if(is_array($staff_list_view) && isset($staff_list_view['row_body']) && isset($staff_list_view['row_body'][$row_cnt]))
-							{!! $staff_list_view['row_body'][$row_cnt] !!}
+							@if(is_array($user_list_view) && isset($user_list_view['row_body']) && isset($user_list_view['row_body'][$row_cnt]))
+							{!! $user_list_view['row_body'][$row_cnt] !!}
 							@endif
-							<td><a href="{{URL::to('staff/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a></td>
+							<td><a href="{{URL::to('user/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a></td>
 						</tr>
 
 <?php $row_cnt++; ?>
@@ -61,8 +61,8 @@
 							<th>Email</th>
 							<th>Created</th>
 							<th>Last Login</th>
-							@if(is_array($staff_list_view) && isset($staff_list_view['row_head']))
-							{!! $staff_list_view['row_head'] !!}
+							@if(is_array($user_list_view) && isset($user_list_view['row_head']))
+							{!! $user_list_view['row_head'] !!}
 							@endif
 							<th>Edit</th>
 						</tr>

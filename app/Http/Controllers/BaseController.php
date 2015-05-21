@@ -85,11 +85,11 @@ class BaseController extends Controller {
 			$default_menu = '<li class="dropdown">
 							<a href="#" class="dropdown-toggle">
 								<i class="fa fa-user"></i>
-								<span class="hidden-xs">Staff</span>
+								<span class="hidden-xs">Users</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li>'.HTML::link('staff', 'View Staff').'</li>
-								<li>'.HTML::link('staff/new', 'Add Staff').'</li>
+								<li>'.HTML::link('user', 'View Users').'</li>
+								<li>'.HTML::link('user/new', 'Add User').'</li>
 							</ul>
 						</li>';
 		}else{

@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-xs-8">
-		<h4><?=$staff['firstname']?></h4>
+		<h4><?=$user['firstname']?></h4>
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">
 					<i class="fa fa-briefcase"></i>
-					<span>Staff Details</span>
+					<span>User Details</span>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -15,11 +15,11 @@
 			</div>
 			<div class="box-content">
 				<div class="card">
-					{!! HTML::linkAction("StaffController@getEdit", 'Edit', array($staff['id']), array('class'=>'btn btn-default pull-right')) !!}
-					<h4 class="page-header"><?=$staff['firstname']?></h4>
+					{!! HTML::linkAction("UserController@getEdit", 'Edit', array($user['id']), array('class'=>'btn btn-default pull-right')) !!}
+					<h4 class="page-header"><?=$user['firstname']?></h4>
 					<p>
-						@if($staff['email'])
-						<a href="mailto:<?=$staff['email']?>"><i class="fa fa-envelope"></i> <?=$staff['email']?></a> <br>
+						@if($user['email'])
+						<a href="mailto:<?=$user['email']?>"><i class="fa fa-envelope"></i> <?=$user['email']?></a> <br>
 						@endif
 						
 					</p>
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-			{!! $staff_single_view !!}
+			{!! $user_single_view !!}
 	</div>
 	<div class="col-xs-4">
 		
@@ -59,4 +59,4 @@ $(document).ready(function() {
 </script>	  		
 
 {!! HTML::linkAction("StaffController@getIndex", "Cancel") !!} - 
-{!! HTML::linkAction("StaffController@getDelete", "Delete", array($staff['id'])) !!}
+{!! HTML::linkAction("StaffController@getDelete", "Delete", array($user['id'])) !!}
