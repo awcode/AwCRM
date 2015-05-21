@@ -22,7 +22,7 @@ class UserController extends BaseController {
 		$users = $this->user->all();
 		$user_list_view  = $this->modulesFilterHTML("", "userListView", $users);
 		
-		$this->doLayout('staff.list')
+		$this->doLayout('user.list')
                 ->with("users", $users)
                 ->with("user_list_view", $staff_list_view);
 	}
@@ -50,7 +50,7 @@ class UserController extends BaseController {
 		$user_edit_view  = $this->modulesFilterHTML("", "userEditView", $staff);
 		
 		$this->doLayout('user.edit')
-        		->with("staffuser", $user)
+        		->with("user", $user)
                 ->with("user_edit_view", $user_edit_view);
 	}
 	
