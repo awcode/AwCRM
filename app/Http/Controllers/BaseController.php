@@ -9,6 +9,7 @@ use URL;
 use App;
 use View;
 use Validator;
+use HTML;
 use Module;
 
 
@@ -79,7 +80,21 @@ class BaseController extends Controller {
 		$this->layout->breadcrumbs = View::make("layouts.breadcrumbs")
 				->with("breadcrumbs", $this->breadcrumbs);
 		
-		$menucontent = $this->modulesFilterHTML("","getMenu_".$this->menu);
+		if($this->menu == "main"){
+			$default_menu = '<li class="dropdown">
+							<a href="#" class="dropdown-toggle">
+								<i class="fa fa-user"></i>
+								<span class="hidden-xs">Staff</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>'.HTML::link('staff', 'View Staff').'</li>
+								<li>'.HTML::link('staff/new', 'Add Staff').'</li>
+							</ul>
+						</li>';
+		}else{
+			$default_menu = '';
+		}
+		$menucontent = $this->modulesFilterHTML($default_menu,"getMenu_".$this->menu);
 		
 		
 		$this->layout->menu = View::make("layouts.".$this->menu."menu")
