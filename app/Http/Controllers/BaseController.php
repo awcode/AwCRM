@@ -27,7 +27,7 @@ class BaseController extends Controller {
 	protected $actions;
 	
 	public function __construct() {
-    	$this->title = str_replace(array("Controller", "Controllers", "\Modules\\", "AwCore", "\Http\s\\", "'"), "", get_class($this));
+    	$this->title = str_replace(array("Controllers", "Controller", "\Modules\\", "AwCore", "\Http\s\\", "'"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
 		$modules = Module::enabled();
@@ -35,7 +35,7 @@ class BaseController extends Controller {
 			foreach($modules as $module){
 				$slug = $module['slug'];
 				$path = "\AwCore\Modules\\".ucfirst($slug)."\\".ucfirst($slug)."";
-				$this->title = str_replace($slug."\\", "", $this->title);
+				$this->title = str_replace(ucfirst($slug)."\\", "", $this->title);
 				$this->modules[$slug] = App::make($path);
 				if(isset($this->modules[$slug]->filters) && is_array($this->modules[$slug]->filters) && count($this->modules[$slug]->filters)){
 					foreach($this->modules[$slug]->filters as $filter=>$method){
