@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-    <title><?php if($title !="") echo " - ".$title; ?></title>
+    <title><?php if($title !="") echo $title; ?></title>
 
 	{!! HTML::style('/bower_components/devoops/plugins/bootstrap/bootstrap.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.css') !!}

@@ -27,7 +27,7 @@ class BaseController extends Controller {
 	protected $actions;
 	
 	public function __construct() {
-    	$this->title = str_replace(array("Controller", "AwCore", "\Http\s\\"), "", get_class($this));
+    	$this->title = str_replace(array("Controller", "\Modules\\", "AwCore", "\Http\s\\", "'"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
 		$modules = Module::enabled();
