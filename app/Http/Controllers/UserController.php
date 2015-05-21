@@ -28,8 +28,8 @@ class UserController extends BaseController {
 	}
 
 	public function getView($id){
-		$staff = $this->user->find($id);
-		$user_single_view  = $this->modulesFilterHTML("", "userSingleView", $staff);
+		$user = $this->user->find($id);
+		$user_single_view  = $this->modulesFilterHTML("", "userSingleView", $user);
 		
 		$this->doLayout('user.view')
                 ->with("user", $user)
@@ -47,7 +47,7 @@ class UserController extends BaseController {
 	
 	public function getEdit($id) {
 		$user = $this->user->find($id);
-		$user_edit_view  = $this->modulesFilterHTML("", "userEditView", $staff);
+		$user_edit_view  = $this->modulesFilterHTML("", "userEditView", $user);
 		
 		$this->doLayout('user.edit')
         		->with("user", $user)
