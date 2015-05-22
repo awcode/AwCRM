@@ -27,11 +27,11 @@ abstract class AbstractEloquentRepository {
 		}
 	}	
 	
-	/**
-	* Return all users
-	*
-	* @return Illuminate\Database\Eloquent\Collection
-	*/
+
+	public function addToResultRow($row){
+		return $row;
+	}
+
 	public function all()
 	{
 		return $this->_all();
@@ -43,6 +43,7 @@ abstract class AbstractEloquentRepository {
 			$new_arr = array();
 			$primary = $this->model->getKeyName();
 			foreach($arr as $k=>$v){
+				$v = $this->addToResultRow($v);
 				$key = $v[$primary];
 				$new_arr[$key] = $v;
 			}
@@ -60,7 +61,9 @@ abstract class AbstractEloquentRepository {
 	{
 		$find = $this->model->find($id);
 		if(!$find) return false;
-		return $find->toArray();
+		$row = $find->toArray();
+		$row = $this->addToResultRow($row);
+		return $row;
 	}
 	
 	public function delete($id)
@@ -108,6 +111,11 @@ abstract class AbstractEloquentRepository {
 		$this->setWhere($key, $type, $value);
 		$result = $this->Where->get()->toArray();
 		$this->Where = NULL;
+		if(count($result)){
+        	foreach($result as $k=>$v){
+        		$result = $this->addToResultRow($result);
+        	}
+        }
 		return $result;
 	}
 	
@@ -242,5 +250,4 @@ abstract class AbstractEloquentRepository {
 		}
 		return $flat_arr;
 	}
-
 }
