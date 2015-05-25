@@ -113,7 +113,7 @@ abstract class AbstractEloquentRepository {
 		$this->Where = NULL;
 		if(count($result)){
         	foreach($result as $k=>$v){
-        		$result = $this->addToResultRow($v);
+        		$result[$k] = $this->addToResultRow($v);
         	}
         }
 		return $result;
