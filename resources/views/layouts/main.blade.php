@@ -101,7 +101,7 @@
 									</a>
 									<ul class="dropdown-menu">
 										<li>
-											<a href="{{URL::to('staff/edit', array(Auth::user()->id))}}">
+											<a href="{{URL::to('user/edit', array(Auth::user()->id))}}">
 												<i class="fa fa-user"></i>
 												<span>Profile</span>
 											</a>
