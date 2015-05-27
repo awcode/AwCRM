@@ -8,6 +8,7 @@ use DB;
 use Module;
 use App;
 use Doctrine\DBAL\Driver\PDOMySql\Driver;
+use Auth;
 
 abstract class AbstractEloquentRepository {
 	protected $modules;
@@ -173,7 +174,12 @@ abstract class AbstractEloquentRepository {
         		if(($type == "integer" || $type == "boolean")){
         			$record->$col = 0;
         			$arr[$col] = 0;
-        		}
+				}elseif($col == "user_id"){
+					if(Auth::check()){
+						$record->$col = Auth::user()->id;
+        				$arr[$col] = Auth::user()->id;
+					}
+				}
         	}
         }
        
