@@ -48,7 +48,8 @@
 							@if(is_array($user_list_view) && isset($user_list_view['row_body']) && isset($user_list_view['row_body'][$row_cnt]))
 							{!! $user_list_view['row_body'][$row_cnt] !!}
 							@endif
-							<td><a href="{{URL::to('user/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a></td>
+							<td><a href="{{URL::to('user/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+							<a href="{{URL::to('user/delete', array($user['id']))}}"><i class="fa fa-close"></i></a></td>
 						</tr>
 
 <?php $row_cnt++; ?>

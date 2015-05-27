@@ -58,5 +58,5 @@ $(document).ready(function() {
 });
 </script>	  		
 
-{!! HTML::linkAction("StaffController@getIndex", "Cancel") !!} - 
-{!! HTML::linkAction("StaffController@getDelete", "Delete", array($user['id'])) !!}
+{!! HTML::linkAction("UserController@getIndex", "Cancel") !!} -
+{!! HTML::linkAction("UserController@getDelete", "Delete", array($user['id'])) !!}

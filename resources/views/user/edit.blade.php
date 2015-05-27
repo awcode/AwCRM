@@ -15,5 +15,5 @@
 	
 	{!! $user_edit_view !!}
 	
-	{!! Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))!!}
+	{!! Form::submit('Save', array('class'=>'btn btn-large btn-primary btn-block'))!!}
 {!! Form::close() !!}
