@@ -171,14 +171,14 @@ abstract class AbstractEloquentRepository {
         		}
         		$arr[$col] = $record->$col;
         	}else{
-        		if(($type == "integer" || $type == "boolean")){
-        			$record->$col = 0;
-        			$arr[$col] = 0;
-				}elseif($col == "user_id"){
+        		if($col == "user_id"){
 					if(Auth::check()){
 						$record->$col = Auth::user()->id;
         				$arr[$col] = Auth::user()->id;
 					}
+				}elseif(($type == "integer" || $type == "boolean")){
+        			$record->$col = 0;
+        			$arr[$col] = 0;
 				}
         	}
         }
