@@ -15,10 +15,12 @@ class VerifyCsrfToken extends BaseVerifier {
 	public function handle($request, Closure $next)
 	{
 		global $open_post_routes;
-		foreach($open_post_routes as $route) {
-
-			if ($request->is($route)) {
-			}
+		if(is_array($open_post_routes) && count($open_post_routes)){
+		   foreach($open_post_routes as $route) {
+				if ($request->is($route)) {
+					return $next($request);
+				}
+		   }
 		}
 		return parent::handle($request, $next);
 	}
