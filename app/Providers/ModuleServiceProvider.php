@@ -3,7 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 
 
-class Transportersio extends ServiceProvider{
+class ModuleServiceProvider extends ServiceProvider{
 
 	public function queueScript($name, $src){
 		//[[TODO - Lots of extra functionality can be added here, for styles too]]
