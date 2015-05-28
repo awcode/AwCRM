@@ -13,8 +13,6 @@ use HTML;
 use Module;
 
 
-use Repositories\Event\EventInterface as EventInterface ;
-
 class BaseController extends Controller {
 
 	public $title;
