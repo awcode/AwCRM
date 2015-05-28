@@ -63,10 +63,13 @@ class BaseController extends Controller {
 		if ( ! is_null($this->layout))
 		{
 			$headMenu = $this->modulesFilterHTML("","getMenu_head");
+			$scripts = $this->modulesLoadScripts();
+			$headSection = $this->modulesFilterHTML($scripts,"getHeadSection");
 			
 			$this->layout = View::make($this->layout)
 				->with("alert_count", $this->alert_count)
 				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"))
+				->with("headSection", $headSection)
 				->with("headMenu", $headMenu);
 		}
 		
@@ -158,7 +161,25 @@ class BaseController extends Controller {
 		}
 		return $response;
 	}
-
+	
+	public function queueScript($name, $src){
+		//[[TODO - Lots of extra functionality can be added here, for styles too]]
+		global $AWCORE_LOAD_SCRIPTS;
+		
+		$AWCORE_LOAD_SCRIPTS[$name]['src'] = $src;
+		
+	}
+	
+	protected function modulesLoadScripts(){
+		global $AWCORE_LOAD_SCRIPTS;
+		$html = "";
+		if(is_array($AWCORE_LOAD_SCRIPTS) && count($AWCORE_LOAD_SCRIPTS)){
+			foreach($AWCORE_LOAD_SCRIPTS as $script){
+				$html .= "<script type='text/javascript' src='".$script['src']."'></script>";
+			}
+		}
+		return $html;
+	}
 	
 
 }

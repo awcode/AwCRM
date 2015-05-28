@@ -43,7 +43,7 @@
 <script type="text/javascript">
 	var base_url = "{{URL::to('/')}}";
 </script>    
-
+	  {!! $headSection !!}
   </head>
   <body>
   
