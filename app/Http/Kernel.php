@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-
+		'AwCore\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -27,7 +27,6 @@ class Kernel extends HttpKernel {
 		'auth' => 'AwCore\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'AwCore\Http\Middleware\RedirectIfAuthenticated',
-		'csrf' => 'AwCore\Http\Middleware\VerifyCsrfToken',
 	];
 
 }

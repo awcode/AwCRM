@@ -14,7 +14,7 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
-		global $open_post_routes;
+		$open_post_routes = Config::get('app.open_post_routes');;
 		if(is_array($open_post_routes) && count($open_post_routes)){
 		   foreach($open_post_routes as $route) {
 				if ($request->is($route)) {
