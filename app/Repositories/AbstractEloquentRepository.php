@@ -192,7 +192,9 @@ abstract class AbstractEloquentRepository {
 		return $arr;
 	}
 	
-	
+	public function delete($mixed){
+		return $this->model->destroy($mixed);
+	}
 	
 	
 	public function getSchema(){
