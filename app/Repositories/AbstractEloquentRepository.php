@@ -41,14 +41,10 @@ abstract class AbstractEloquentRepository {
 	{
 		$arr = $this->model->all()->toArray();
 		if(count($arr)){
-			$new_arr = array();
-			$primary = $this->model->getKeyName();
 			foreach($arr as $k=>$v){
-				$v = $this->addToResultRow($v);
-				$key = $v[$primary];
-				$new_arr[$key] = $v;
+				$arr[$k] = $this->addToResultRow($v);
 			}
-			$arr = $new_arr;
+			$arr = $this->makeKVarr($arr);
 		}
 		return $arr;
 	}
@@ -253,5 +249,16 @@ abstract class AbstractEloquentRepository {
 			}
 		}
 		return $flat_arr;
+	}
+
+	public function makeKVarr($arr, $primary = false){
+		$new_arr = array();
+		if(!$primary) $primary = $this->model->getKeyName();
+
+		foreach($arr as $k=>$v){
+			$key = $v[$primary];
+			$new_arr[$key] = $v;
+		}
+		$arr = $new_arr;
 	}
 }
