@@ -99,9 +99,9 @@ abstract class AbstractEloquentRepository {
 		return $this;
 	}
 	
-	public function getWhere($key="", $type="", $value="")
+	public function getWhere($key="", $type="", $value="", $KV=false)
 	{
-		return $this->_getWhere($key, $type, $value);
+		return $this->_getWhere($key, $type, $value, $KV);
 	}
 	protected function _getWhere($key="", $type="", $value="", $KV=false)
 	{
