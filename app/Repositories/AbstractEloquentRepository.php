@@ -13,6 +13,9 @@ use Auth;
 abstract class AbstractEloquentRepository {
 	protected $modules;
 	protected $Where = null;
+	protected $take;
+	protected $skip;
+	protected $count;
 	
 	public function __construct(){
 		if(!isset($_ENV['modules_loading'])){
@@ -86,14 +89,12 @@ abstract class AbstractEloquentRepository {
 
 	public function take($take)
 	{
-		if($this->Where == null){$this->Where =  $this->model;}
-		$this->Where = $this->Where->take($take);
+		$this->take = $take;
 		return $this;
 	}
 	public function skip($skip)
 	{
-		if($this->Where == null){$this->Where =  $this->model;}
-		$this->Where = $this->Where->skip($skip);
+		$this->skip = $skip;
 		return $this;
 	}
 
@@ -120,15 +121,25 @@ abstract class AbstractEloquentRepository {
 	protected function _getWhere($key="", $type="", $value="", $KV=false)
 	{
 		$this->setWhere($key, $type, $value);
+		$this->count = $this->Where->count();
+		if($this->take){$this->Where->take($this->take);}
+		if($this->skip){$this->Where->skip($this->skip);}
+
 		$result = $this->Where->get()->toArray();
 		if($KV) $result = $this->makeKVarr($result);
 		$this->Where = NULL;
+		$this->take = 0;
+		$this->skip = 0;
+
 		if(count($result)){
         	foreach($result as $k=>$v){
         		$result[$k] = $this->addToResultRow($v);
         	}
         }
 		return $result;
+	}
+	public function getCount(){
+		return $this->count;
 	}
 	
 	public function save(){
