@@ -103,10 +103,11 @@ abstract class AbstractEloquentRepository {
 	{
 		return $this->_getWhere($key, $type, $value);
 	}
-	protected function _getWhere($key="", $type="", $value="")
+	protected function _getWhere($key="", $type="", $value="", $KV=false)
 	{
 		$this->setWhere($key, $type, $value);
 		$result = $this->Where->get()->toArray();
+		if($KV) $result = $this->makeKVarr($result);
 		$this->Where = NULL;
 		if(count($result)){
         	foreach($result as $k=>$v){
