@@ -33,6 +33,7 @@
 		{!! HTML::script('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.js') !!}
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 		{!! HTML::script('/bower_components/devoops/plugins/bootstrap/bootstrap.min.js') !!}
+		{!! HTML::script('/bower_components/devoops/plugins/datatables/jquery.dataTables.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/justified-gallery/jquery.justifiedGallery.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/tinymce/tinymce.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/tinymce/jquery.tinymce.min.js') !!}
