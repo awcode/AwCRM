@@ -138,6 +138,12 @@ abstract class AbstractEloquentRepository {
         }
 		return $result;
 	}
+
+	public function count(){
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->count = $this->Where->count();
+		return $this->count;
+	}
 	public function getCount(){
 		return $this->count;
 	}

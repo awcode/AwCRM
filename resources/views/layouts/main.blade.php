@@ -17,6 +17,7 @@
     {!! HTML::style('/bower_components/devoops/plugins/justified-gallery/justifiedGallery.css') !!}
     {!! HTML::style('/bower_components/devoops/css/style_v2.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/chartist/chartist.min.css') !!}
+	{!! HTML::style('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css') !!}
   
     {!! HTML::style('/css/main.css') !!}
     
