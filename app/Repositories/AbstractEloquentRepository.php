@@ -83,6 +83,20 @@ abstract class AbstractEloquentRepository {
 		$this->Where = $this->Where->where($key, $type, $value);
 		return $this;
 	}
+
+	public function take($take)
+	{
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->take($take);
+		return $this;
+	}
+	public function skip($skip)
+	{
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->skip($skip);
+		return $this;
+	}
+
 	public function setOrder($key="", $dir="")
 	{
 		return $this->_setOrder($key, $dir);
