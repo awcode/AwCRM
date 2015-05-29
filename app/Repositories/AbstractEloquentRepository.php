@@ -260,6 +260,6 @@ abstract class AbstractEloquentRepository {
 			$key = $v[$primary];
 			$new_arr[$key] = $v;
 		}
-		$arr = $new_arr;
+		return $new_arr;
 	}
 }
