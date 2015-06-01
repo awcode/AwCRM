@@ -191,12 +191,16 @@ abstract class AbstractEloquentRepository {
         	$type = DB::connection()->getDoctrineColumn($table, $col)->getType()->getName();
         	if(Input::has($col)){
         		$r = Input::get($col);
-        		$record->$col = $r;
-        		if(($type == "datetime" && ($r[4] !='-') && strtotime($r))){
-        			$record->$col = date("Y-m-d H:i:s", strtotime($r));
+
+        		if(($type == "integer" || $type == "decimal")){
+        			$r = str_replace(",", "", $r);
+        		}elseif(($type == "datetime" && ($r[4] !='-') && strtotime($r))){
+        			$r = date("Y-m-d H:i:s", strtotime($r));
         		}elseif(($type == "date" && ($r[4] !='-') && strtotime($r))){
-        			$record->$col = date("Y-m-d", strtotime($r));
+        			$r = date("Y-m-d", strtotime($r));
         		}
+
+				$record->$col = $r;
         		$arr[$col] = $record->$col;
         	}else{
         		if($col == "user_id"){
