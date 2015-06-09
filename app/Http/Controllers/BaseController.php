@@ -82,7 +82,7 @@ class BaseController extends Controller {
 		$this->layout->breadcrumbs = View::make("layouts.breadcrumbs")
 				->with("breadcrumbs", $this->breadcrumbs);
 		
-		if($this->menu == "main"){
+		if($this->menu == "settings"){
 			$default_menu = '<li class="dropdown">
 							<a href="#" class="dropdown-toggle">
 								<i class="fa fa-user"></i>

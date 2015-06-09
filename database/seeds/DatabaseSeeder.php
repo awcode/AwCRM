@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder {
 				foreach($modules as $module){
 					$slug = $module['slug'];
 					$path = app_path()."\Modules\\".ucfirst($slug)."\Database\Seeds\\";
-					if(isdir($path)){
+					if(is_dir($path)){
 						$seeds = scandir($path);
 						if(is_array($seeds) && count($seeds)){
 							foreach($seeds as $seed){
