@@ -153,8 +153,6 @@ return [
 		'Repositories\Contact\ContactServiceProvider',
 		'Repositories\User\UserServiceProvider',
 		'Repositories\Country\CountryServiceProvider',
-		'Repositories\Payments\PaymentsServiceProvider',
-		'Repositories\PaymentAllocation\PaymentAllocationServiceProvider',
 		'Repositories\Triggers\TriggersServiceProvider',
 		'Repositories\Log\LogServiceProvider',
 		'Repositories\ConfigSettings\ConfigSettingsServiceProvider',

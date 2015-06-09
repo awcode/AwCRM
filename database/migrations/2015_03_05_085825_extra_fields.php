@@ -12,13 +12,6 @@ class ExtraFields extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('customer', function(Blueprint $table)
-		{
-			$table->integer("staff_added");
-			$table->integer("staff_assigned");
-			
-			$table->softDeletes();
-		});
 		
 		Schema::table('users', function(Blueprint $table)
 		{
@@ -36,11 +29,6 @@ class ExtraFields extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('customer', function(Blueprint $table)
-		{
-			$table->dropColumn('staff_added');
-			$table->dropColumn('staff_assigned');
-		});
 		
 		Schema::table('users', function(Blueprint $table)
 		{

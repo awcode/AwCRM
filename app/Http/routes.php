@@ -16,7 +16,7 @@ Route::group(['middleware' => 'auth'], function()
 
 	
 
-	Route::controller('staff', 'StaffController');
+	Route::controller('user', 'UserController');
 
 	
 	Route::controller('settings', 'SettingsController');

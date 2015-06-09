@@ -30,7 +30,18 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserI
 		$user->password = Hash::make(Input::get('password'));
 		$user->save();
 		
-		return $user->user_id;
+		return $user->id;
+  	}
+  	
+  	public function updateUser($id){
+  		$user = $this->model->find($id);
+		$user->firstname = Input::get('firstname');
+		$user->lastname = Input::get('lastname');
+		$user->email = Input::get('email');
+		if(Input::get('password') != ""){$user->password = Hash::make(Input::get('password'));}
+		$user->save();
+		
+		return $user->id;
   	}
   
   	public function recordLogin($id){
@@ -42,12 +53,20 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserI
 	
 	public function allUserSelectArr(){
 		$all = $this->all();
-		$arr = array('0'=>"No Staff Assigned");
+		$arr = array('0'=>"Select User");
 
 		foreach($all as $k=>$v){
 			$arr[$k] = $v['firstname']." ".$v['lastname'];
 		}
 		return $arr;
+	}
+	
+	public function getModel(){
+		return $this->model;
+	}
+ 
+	public function rules(){
+		return $this->model->rules();
 	}
  
 }

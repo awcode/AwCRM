@@ -11,7 +11,7 @@ class AddressController extends BaseController
 	protected $layout = "layouts.main";
 
 	public function __construct(AddressInterface $address) {
-		parent::__construct($event);
+		parent::__construct();
 		$this->address = $address;
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
@@ -41,10 +41,13 @@ class AddressController extends BaseController
     }
  
     public function getNew($link_id) {
+        $allcountry = $this->address->allCountrySelectArr();
+
         $this->doLayout("address.edit")
         		->with("address", $this->address->getEmptyArr())
                 ->with("link_id", $link_id)
-                ->with("link_type", $this->link_type);
+                ->with("link_type", $this->link_type)
+                ->with("allcountry", $allcountry);
     }
  
  	public function postEdit($id){
@@ -58,6 +61,8 @@ class AddressController extends BaseController
     private function _update() {
     	$arr = $this->address->addUpdatePost();
         
-        return Redirect::to($_SERVER['HTTP_REFERER'])->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
+        if(Input::get('return_url')){$return = Input::get('return_url');}
+        else{$return = $_SERVER['HTTP_REFERER'];}
+        return Redirect::to($return)->with('message', 'Address '.(($arr['saveaction']=="update")?'Updated':'added').'!');
     }
 }

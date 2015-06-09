@@ -12,18 +12,7 @@ class CreateCustomersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('customer', function(Blueprint $table)
-		{
-			$table->increments('cust_id');
-			$table->string('company_name', 150);
-			$table->string('registered_name', 150);
-			$table->string('tax_number', 150);
-			$table->string('company_email', 100);
-			$table->integer('cat_id');
-			$table->integer('cust_status');
-			$table->timestamps();
-		});
-		
+
 		Schema::create('contact', function(Blueprint $table)
 		{
 			$table->increments('contact_id');
@@ -35,6 +24,7 @@ class CreateCustomersTable extends Migration {
 			$table->string('email', 100);
 			$table->string('position', 100);
 
+			$table->softDeletes();
 			$table->timestamps();
 		});
 		
@@ -51,6 +41,7 @@ class CreateCustomersTable extends Migration {
 			$table->string('address_province', 100);
 			$table->string('address_postcode', 100);
 			$table->integer('country_id');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 		
@@ -61,6 +52,7 @@ class CreateCustomersTable extends Migration {
 			$table->string('un_num', 3);
 			$table->string('tel', 6);
 			$table->string('country', 100);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 		
@@ -68,6 +60,7 @@ class CreateCustomersTable extends Migration {
 		{
 			$table->increments('cat_id');
 			$table->string('cat_name', 150);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 
@@ -80,7 +73,7 @@ class CreateCustomersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('customer');
+
 		Schema::drop('contact');
 		Schema::drop('address');
 		Schema::drop('country');

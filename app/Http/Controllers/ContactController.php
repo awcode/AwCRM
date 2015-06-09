@@ -14,7 +14,6 @@ class ContactController extends BaseController
 	public function __construct(ContactInterface $contact) { 
 		parent::__construct();
 		$this->contact = $contact;
-		$this->event = $event;
 		$this->link_type = "";
 		$this->beforeFilter('csrf', array('on'=>'post'));
     	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
@@ -60,6 +59,8 @@ class ContactController extends BaseController
     private function _update() {
     	$arr = $this->contact->addUpdatePost();
         
-        return Redirect::to($_SERVER['HTTP_REFERER'])->with('message', 'Contact '.(($arr['saveaction']=="update")?'Updated':'added').'!');
+        if(Input::get('return_url')){$return = Input::get('return_url');}
+        else{$return = $_SERVER['HTTP_REFERER'];}
+        return Redirect::to($return)->with('message', 'Contact '.(($arr['saveaction']=="update")?'Updated':'added').'!');
     }
 }

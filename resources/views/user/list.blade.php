@@ -1,4 +1,4 @@
-<p><i class="fa fa-plus"></i>{!! HTML::linkAction("StaffController@getNew", "Add new staff") !!}</p>
+<p><i class="fa fa-plus"></i>{!! HTML::linkAction("UserController@getNew", "Add new user") !!}</p>
 
 <div class="col-xs-12">
 		<div class="box">
@@ -29,22 +29,30 @@
 							<th>Email</th>
 							<th>Created</th>
 							<th>Last Login</th>
+							@if(is_array($user_list_view) && isset($user_list_view['row_head']))
+							{!! $user_list_view['row_head'] !!}
+							@endif
 							<th>Edit</th>
 						</tr>
 					</thead>
 					<tbody>
 						
-
+<?php $row_cnt = 0;?>
 @foreach($users as $user)
 						<tr>
-							<td>{!! HTML::linkAction("StaffController@getView", $user['firstname'], array($user['id'])) !!}</td>
-							<td>{!! HTML::linkAction("StaffController@getView", $user['lastname'], array($user['id'])) !!}</td>
+							<td>{!! HTML::linkAction("UserController@getView", $user['firstname'], array($user['id'])) !!}</td>
+							<td>{!! HTML::linkAction("UserController@getView", $user['lastname'], array($user['id'])) !!}</td>
 							<td>{{$user['email']}}</td>
 							<td>{{$user['created_at']}}</td>
 							<td>{{$user['lastlogin_date']}}</td>
-							<td><a href="{{URL::to('staff/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a></td>
+							@if(is_array($user_list_view) && isset($user_list_view['row_body']) && isset($user_list_view['row_body'][$row_cnt]))
+							{!! $user_list_view['row_body'][$row_cnt] !!}
+							@endif
+							<td><a href="{{URL::to('user/edit', array($user['id']))}}"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+							<a href="{{URL::to('user/delete', array($user['id']))}}" class="confdel"><i class="fa fa-close"></i></a></td>
 						</tr>
 
+<?php $row_cnt++; ?>
 @endforeach
 					</tbody>
 					<tfoot>
@@ -54,6 +62,9 @@
 							<th>Email</th>
 							<th>Created</th>
 							<th>Last Login</th>
+							@if(is_array($user_list_view) && isset($user_list_view['row_head']))
+							{!! $user_list_view['row_head'] !!}
+							@endif
 							<th>Edit</th>
 						</tr>
 					</tfoot>

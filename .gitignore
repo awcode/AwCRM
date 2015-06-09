@@ -7,3 +7,6 @@ Thumbs.db
 /bootstrap/compiled.php
 composer.phar
 composer.lock
+/app/Modules
+public/.htaccess
+.env.example

@@ -20,54 +20,15 @@ class EloquentAddressRepository extends AbstractEloquentRepository implements Ad
 		$this->model = $model;
 		$this->country = $country;
 	}
- 
-	public function all(){
-		$addresses = $this->_all();
-		$allcountry = $this->country->all();
-        
-        if(count($addresses)){
-        	foreach($addresses as $k=>$v){
-        		$key = $v['country_id'];
-        		if(isset($allcountry[$key])){$addresses[$k]['country_name'] = $allcountry[$key]['country'];}
-        		else{$addresses[$k]['country_name'] = "";}
-        	}
-        }
-		return $addresses;
-	}
+ 	public function addToResultRow($row){
+		if(!isset($this->allcountry)) $this->allcountry = $this->country->all();
 
-	public function find($id){
-		$address = $this->_find($id);
-		$allcountry = $this->country->all();
-        
-        $key = $address['country_id'];
-        if(isset($allcountry[$key])){$address['country_name'] = $allcountry[$key]['country'];}
-        else{$address['country_name'] = "";}
-        
-		return $address;
-	}
+		$key = $address['country_id'];
+        if(isset($this->allcountry[$key])){$row['country_name'] = $this->allcountry[$key]['country'];}
+        else{$row['country_name'] = "";}
 
-	public function getWhere($key="", $type="", $value=""){
-		$addresses = $this->_getWhere($key, $type, $value);
-		$allcountry = $this->country->all();
-        
-        if(count($addresses)){
-        	foreach($addresses as $k=>$v){
-        		$key = $v['country_id'];
-        		if(isset($allcountry[$key])){$addresses[$k]['country_name'] = $allcountry[$key]['country'];}
-        		else{$addresses[$k]['country_name'] = "";}
-        	}
-        }
-        
-		return $addresses;
+		return $row;
 	}
 	
- 	public function allCountrySelectArr(){
-		$all = $this->country->all();
-		$arr = array('0'=>"No Country");
 
-		foreach($all as $k=>$v){
-			$arr[$k] = $v['country'];
-		}
-		return $arr;
-	} 
 }

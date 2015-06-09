@@ -27,8 +27,9 @@
 
 {!! Form::hidden('link_id', $link_id) !!}
 {!! Form::hidden('link_type', $link_type) !!}
+{!! Form::hidden('return_url', $_SERVER['HTTP_REFERER']) !!}
 {!! Form::hidden('address_id', $address['address_id']) !!}
 {!! Form::submit('Save', array('class'=>'btn btn-default')) !!}
-{!! HTML::linkAction("CustomerController@getView", 'Cancel', array($cust_id), array('class'=>'btn')) !!}
+{!! HTML::link($_SERVER['HTTP_REFERER'], 'Cancel', array('class'=>'btn')) !!}
 
 {!! Form::close() !!}

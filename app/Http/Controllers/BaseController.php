@@ -9,10 +9,9 @@ use URL;
 use App;
 use View;
 use Validator;
+use HTML;
 use Module;
 
-
-use Repositories\Event\EventInterface as EventInterface ;
 
 class BaseController extends Controller {
 
@@ -26,14 +25,15 @@ class BaseController extends Controller {
 	protected $actions;
 	
 	public function __construct() {
-    	$this->title = str_replace(array("Controller", "AwCore"), "", get_class($this));
+    	$this->title = str_replace(array("Controllers\\", "Controllers", "Controller", "\Modules\\", "AwCore", "\Http\\", "'"), "", get_class($this));
     	$this->breadcrumbs[] = array(URL::to('/'), "Home");
     	
 		$modules = Module::enabled();
 		if(is_array($modules) && count($modules)){
 			foreach($modules as $module){
 				$slug = $module['slug'];
-				$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+				$path = "\AwCore\Modules\\".ucfirst($slug)."\\".ucfirst($slug)."";
+				$this->title = str_replace(ucfirst($slug)."\\", "", $this->title);
 				$this->modules[$slug] = App::make($path);
 				if(isset($this->modules[$slug]->filters) && is_array($this->modules[$slug]->filters) && count($this->modules[$slug]->filters)){
 					foreach($this->modules[$slug]->filters as $filter=>$method){
@@ -61,10 +61,13 @@ class BaseController extends Controller {
 		if ( ! is_null($this->layout))
 		{
 			$headMenu = $this->modulesFilterHTML("","getMenu_head");
+			$scripts = $this->modulesLoadScripts();
+			$headSection = $this->modulesFilterHTML($scripts,"getHeadSection");
 			
 			$this->layout = View::make($this->layout)
 				->with("alert_count", $this->alert_count)
 				->with("product_name", $this->modulesFilterHTML("AwCore","setProductName"))
+				->with("headSection", $headSection)
 				->with("headMenu", $headMenu);
 		}
 		
@@ -79,7 +82,21 @@ class BaseController extends Controller {
 		$this->layout->breadcrumbs = View::make("layouts.breadcrumbs")
 				->with("breadcrumbs", $this->breadcrumbs);
 		
-		$menucontent = $this->modulesFilterHTML("","getMenu_".$this->menu);
+		if($this->menu == "settings"){
+			$default_menu = '<li class="dropdown">
+							<a href="#" class="dropdown-toggle">
+								<i class="fa fa-user"></i>
+								<span class="hidden-xs">Users</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>'.HTML::link('user', 'View Users').'</li>
+								<li>'.HTML::link('user/new', 'Add User').'</li>
+							</ul>
+						</li>';
+		}else{
+			$default_menu = '';
+		}
+		$menucontent = $this->modulesFilterHTML($default_menu,"getMenu_".$this->menu);
 		
 		
 		$this->layout->menu = View::make("layouts.".$this->menu."menu")
@@ -132,17 +149,35 @@ class BaseController extends Controller {
 	}
 
 	protected function modulesAction($action, $options=null){
-		if(isset($this->filters[$filter]) && is_array($this->filters[$filter]) && count($this->filters[$filter])){
-			$response = array("cnt"=>0);
-			foreach($this->filters[$filter] as $filter_arr){
-				if(method_exists($this->modules[$filter_arr['module']], $filter_arr['method'])){
-					$this->modules[$filter_arr['module']]->$filter_arr['method']($response, $options);
+		$response = array("cnt"=>0);
+		if(isset($this->actions[$action]) && is_array($this->actions[$action]) && count($this->actions[$action])){
+			foreach($this->actions[$action] as $action_arr){
+				if(method_exists($this->modules[$action_arr['module']], $action_arr['method'])){
+					$this->modules[$action_arr['module']]->$action_arr['method']($response, $options);
 				}
 			}
 		}
 		return $response;
 	}
-
+	
+	public function queueScript($name, $src){
+		//[[TODO - Lots of extra functionality can be added here, for styles too]]
+		global $AWCORE_LOAD_SCRIPTS;
+		
+		$AWCORE_LOAD_SCRIPTS[$name]['src'] = $src;
+		
+	}
+	
+	protected function modulesLoadScripts(){
+		global $AWCORE_LOAD_SCRIPTS;
+		$html = "";
+		if(is_array($AWCORE_LOAD_SCRIPTS) && count($AWCORE_LOAD_SCRIPTS)){
+			foreach($AWCORE_LOAD_SCRIPTS as $script){
+				$html .= "<script type='text/javascript' src='".$script['src']."'></script>";
+			}
+		}
+		return $html;
+	}
 	
 
 }

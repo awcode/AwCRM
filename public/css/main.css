@@ -34,3 +34,14 @@ div#messages-list {
 #modalbox.wide .devoops-modal{
 	width: 90%;
 }
+.table.fixed {
+	table-layout: fixed;
+}
+.table.fixed td{
+	white-space: -o-pre-wrap; 
+    word-wrap: break-word;
+    white-space: pre-wrap; 
+    white-space: -moz-pre-wrap; 
+    white-space: -pre-wrap; 
+    max-width:25%;
+}

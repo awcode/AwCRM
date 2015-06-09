@@ -9,13 +9,4 @@
 
 						{!! $menuContent !!}
 
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-user"></i>
-								<span class="hidden-xs">Staff</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>{!! HTML::link('staff', 'View Staff') !!}</li>
-								<li>{!! HTML::link('staff/new', 'Add Staff') !!}</li>
-							</ul>
-						</li>
+						

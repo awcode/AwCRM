@@ -8,9 +8,14 @@ use DB;
 use Module;
 use App;
 use Doctrine\DBAL\Driver\PDOMySql\Driver;
+use Auth;
 
 abstract class AbstractEloquentRepository {
 	protected $modules;
+	protected $Where = null;
+	protected $take;
+	protected $skip;
+	protected $count;
 	
 	public function __construct(){
 		if(!isset($_ENV['modules_loading'])){
@@ -19,18 +24,18 @@ abstract class AbstractEloquentRepository {
 				$_ENV['modules_loading'] = true;
 				foreach($modules as $module){
 					$slug = $module['slug'];
-					$path = "\AwCore\Modules\\".$slug."\\".$slug."";
+					$path = "\AwCore\Modules\\".ucfirst($slug)."\\".ucfirst($slug)."";
 					$this->modules[$slug] = App::make($path);
 				}
 			}
 		}
 	}	
 	
-	/**
-	* Return all users
-	*
-	* @return Illuminate\Database\Eloquent\Collection
-	*/
+
+	public function addToResultRow($row){
+		return $row;
+	}
+
 	public function all()
 	{
 		return $this->_all();
@@ -39,13 +44,10 @@ abstract class AbstractEloquentRepository {
 	{
 		$arr = $this->model->all()->toArray();
 		if(count($arr)){
-			$new_arr = array();
-			$primary = $this->model->getKeyName();
 			foreach($arr as $k=>$v){
-				$key = $v[$primary];
-				$new_arr[$key] = $v;
+				$arr[$k] = $this->addToResultRow($v);
 			}
-			$arr = $new_arr;
+			$arr = $this->makeKVarr($arr);
 		}
 		return $arr;
 	}
@@ -59,7 +61,9 @@ abstract class AbstractEloquentRepository {
 	{
 		$find = $this->model->find($id);
 		if(!$find) return false;
-		return $find->toArray();
+		$row = $find->toArray();
+		$row = $this->addToResultRow($row);
+		return $row;
 	}
 	
 	public function delete($id)
@@ -72,19 +76,93 @@ abstract class AbstractEloquentRepository {
         return $record->delete();
 	}
 
-	public function getWhere($key="", $type="", $value="")
+	public function setWhere($key="", $type="", $value="")
 	{
-		return $this->_getWhere($key, $type, $value);
+		return $this->_setWhere($key, $type, $value);
 	}
-	protected function _getWhere($key="", $type="", $value="")
+	protected function _setWhere($key="", $type="", $value="")
 	{
-		return $this->model->where($key, $type, $value)->get()->toArray();
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->where($key, $type, $value);
+		return $this;
+	}
+
+	public function take($take)
+	{
+		$this->take = $take;
+		return $this;
+	}
+	public function skip($skip)
+	{
+		$this->skip = $skip;
+		return $this;
+	}
+
+	public function setOrder($key="", $dir="")
+	{
+		return $this->_setOrder($key, $dir);
+	}
+	protected function _setOrder($key="", $dir="")
+	{
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->OrderBy($key, $dir);
+		return $this;
+	}
+	
+	public function join($table, $key1, $match, $key2){
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->join($table, $key1, $match, $key2);
+		return $this;
+	}
+	
+	public function leftJoin($table, $key1, $match, $key2){
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->leftJoin($table, $key1, $match, $key2);
+		return $this;
+	}
+
+	public function getWhere($key="", $type="", $value="", $KV=false)
+	{
+		return $this->_getWhere($key, $type, $value, $KV);
+	}
+	protected function _getWhere($key="", $type="", $value="", $KV=false)
+	{
+		$this->setWhere($key, $type, $value);
+		$this->count = $this->Where->count();
+		if($this->take){$this->Where->take($this->take);}
+		if($this->skip){$this->Where->skip($this->skip);}
+
+		$result = $this->Where->get()->toArray();
+		if($KV) $result = $this->makeKVarr($result);
+		$this->Where = NULL;
+		$this->take = 0;
+		$this->skip = 0;
+
+		if(count($result)){
+        	foreach($result as $k=>$v){
+        		$result[$k] = $this->addToResultRow($v);
+        	}
+        }
+		return $result;
+	}
+
+	public function count(){
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->count = $this->Where->count();
+		return $this->count;
+	}
+	public function getCount(){
+		return $this->count;
 	}
 	
 	public function save(){
 		return $this->model->save();
 	}
-
+	
+	public function create($arr){
+		$this->model->unguard();
+		return $this->model->create($arr);
+	}
 	
 	public function addUpdatePost(){
 		return $this->_addUpdatePost();
@@ -120,16 +198,27 @@ abstract class AbstractEloquentRepository {
         	$type = DB::connection()->getDoctrineColumn($table, $col)->getType()->getName();
         	if(Input::has($col)){
         		$r = Input::get($col);
-        		$record->$col = $r;
-        		if(($type == "datetime" && ($r[4] !='-') && strtotime($r))){
-        			$record->$col = date("Y-m-d H:i:s", strtotime($r));
+
+        		if(($type == "integer" || $type == "decimal")){
+        			$r = str_replace(",", "", $r);
+        		}elseif(($type == "datetime" && ($r[4] !='-') && strtotime($r))){
+        			$r = date("Y-m-d H:i:s", strtotime($r));
+        		}elseif(($type == "date" && ($r[4] !='-') && strtotime($r))){
+        			$r = date("Y-m-d", strtotime($r));
         		}
+
+				$record->$col = $r;
         		$arr[$col] = $record->$col;
         	}else{
-        		if(($type == "integer" || $type == "boolean")){
+        		if($col == "user_id"){
+					if(Auth::check()){
+						$record->$col = Auth::user()->id;
+        				$arr[$col] = Auth::user()->id;
+					}
+				}elseif(($type == "integer" || $type == "boolean")){
         			$record->$col = 0;
         			$arr[$col] = 0;
-        		}
+				}
         	}
         }
        
@@ -141,9 +230,7 @@ abstract class AbstractEloquentRepository {
         }
 		return $arr;
 	}
-	
-	
-	
+
 	
 	public function getSchema(){
 		$columns = Schema::getColumnListing($this->model->getTable());
@@ -201,10 +288,20 @@ abstract class AbstractEloquentRepository {
 		
 		if(is_array($arr) && count($arr)){
 			foreach($arr as $k=>$v){
-				$flat_arr[$k] = $v['config_value'];
+				if(isset($v['config_value'])) $flat_arr[$k] = $v['config_value'];
 			}
 		}
 		return $flat_arr;
 	}
 
+	public function makeKVarr($arr, $primary = false){
+		$new_arr = array();
+		if(!$primary) $primary = $this->model->getKeyName();
+
+		foreach($arr as $k=>$v){
+			$key = $v[$primary];
+			$new_arr[$key] = $v;
+		}
+		return $new_arr;
+	}
 }

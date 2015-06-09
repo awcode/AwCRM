@@ -1275,7 +1275,12 @@ $(document).ready(function () {
 	})
 	$('#about').on('mouseleave', function(){
 		$('#about').removeClass('about-h');
-	})
+	});
+
+	$("body").on("click", ".confdel", function(){
+		var conf = window.confirm("Are you sure?");
+		return conf;
+	});
 });
 
 function popupEditEvent(id){

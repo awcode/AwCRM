@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-    <title><?php if($title !="") echo " - ".$title; ?></title>
+    <title><?php if($title !="") echo $title; ?></title>
 
 	{!! HTML::style('/bower_components/devoops/plugins/bootstrap/bootstrap.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.css') !!}
-    {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') !!}
+    {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') !!}
     {!! HTML::style('//fonts.googleapis.com/css?family=Righteous') !!}
     {!! HTML::style('/bower_components/devoops/plugins/fancybox/jquery.fancybox.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/fullcalendar/fullcalendar.css') !!}
@@ -17,7 +17,9 @@
     {!! HTML::style('/bower_components/devoops/plugins/justified-gallery/justifiedGallery.css') !!}
     {!! HTML::style('/bower_components/devoops/css/style_v2.css') !!}
     {!! HTML::style('/bower_components/devoops/plugins/chartist/chartist.min.css') !!}
-  
+	{!! HTML::style('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css') !!}
+  	{!! HTML::style('//cdn.datatables.net/1.10.7/css/jquery.dataTables.css') !!}
+
     {!! HTML::style('/css/main.css') !!}
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,6 +35,7 @@
 		{!! HTML::script('/bower_components/devoops/plugins/jquery-ui/jquery-ui.min.js') !!}
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 		{!! HTML::script('/bower_components/devoops/plugins/bootstrap/bootstrap.min.js') !!}
+		{!! HTML::script('/bower_components/devoops/plugins/datatables/jquery.dataTables.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/justified-gallery/jquery.justifiedGallery.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/tinymce/tinymce.min.js') !!}
 		{!! HTML::script('/bower_components/devoops/plugins/tinymce/jquery.tinymce.min.js') !!}
@@ -43,7 +46,7 @@
 <script type="text/javascript">
 	var base_url = "{{URL::to('/')}}";
 </script>    
-
+	  {!! $headSection !!}
   </head>
   <body>
   
@@ -101,7 +104,7 @@
 									</a>
 									<ul class="dropdown-menu">
 										<li>
-											<a href="{{URL::to('staff/edit', array(Auth::user()->id))}}">
+											<a href="{{URL::to('user/edit', array(Auth::user()->id))}}">
 												<i class="fa fa-user"></i>
 												<span>Profile</span>
 											</a>
