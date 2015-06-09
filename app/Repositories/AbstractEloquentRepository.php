@@ -110,10 +110,17 @@ abstract class AbstractEloquentRepository {
 	}
 	
 	public function join($table, $key1, $match, $key2){
+		if($this->Where == null){$this->Where =  $this->model;}
 		$this->Where = $this->Where->join($table, $key1, $match, $key2);
 		return $this;
 	}
 	
+	public function leftJoin($table, $key1, $match, $key2){
+		if($this->Where == null){$this->Where =  $this->model;}
+		$this->Where = $this->Where->leftJoin($table, $key1, $match, $key2);
+		return $this;
+	}
+
 	public function getWhere($key="", $type="", $value="", $KV=false)
 	{
 		return $this->_getWhere($key, $type, $value, $KV);
