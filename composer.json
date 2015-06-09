@@ -14,7 +14,7 @@
 		"awcode/aw-core-module-customers": ">=0.0.5",
 		"awcode/aw-core-module-orders": ">=0.0.9",
 		"awcode/aw-core-module-events": ">=0.0.3",
-		"awcode/aw-core-module-products": ">=0.0.2",
+		"awcode/aw-core-module-products": ">=0.0.3",
 		"awcode/aw-core-module-suppliers": ">=0.0.1"
 	},
 	"require-dev": {
