@@ -19,13 +19,6 @@ class Config extends Migration {
 			$table->primary('config_id');
 		});
 		
-		Schema::table('log', function($table)
-		{
-			$table->integer('user_id');
-			$table->integer('cust_id');
-			$table->tinyInteger('log_priority')->default(5);
-			$table->string('ip_address', 50);
-		});
 	}
 
 	/**
@@ -37,13 +30,6 @@ class Config extends Migration {
 	{
 		Schema::drop('config');
 		
-		Schema::table('log', function(Blueprint $table)
-		{
-			$table->dropColumn("user_id");
-			$table->dropColumn("cust_id");
-			$table->dropColumn("log_priority");
-			$table->dropColumn("ip_address");
-		});
 	}
 
 }
