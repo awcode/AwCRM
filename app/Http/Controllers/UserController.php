@@ -13,8 +13,8 @@ class UserController extends BaseController {
 	public function __construct(UserInterface $user) {
 		parent::__construct();
 		$this->user = $user;
-		$this->beforeFilter('csrf', array('on'=>'post'));
-    	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
+		$this->menu = "settings";
+
     	$this->breadcrumbs[] = array(URL::to('user'), "Users");
 	}
 	
