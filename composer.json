@@ -61,7 +61,7 @@
 		    ]
 		},
 		 "installer-paths": {
-            "app/Modules/{$name}/": ["awcode/aw-core-module-orders", "awcode/aw-core-module-customers", "awcode/aw-core-module-events"]
+            "app/Modules/{$name}/": ["awcode/aw-core-module-orders", "awcode/aw-core-module-customers", "awcode/aw-core-module-events", "awcode/aw-core-module-products", "awcode/aw-core-module-suppliers"]
         }
 		
 	}
