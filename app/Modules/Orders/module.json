@@ -1,8 +1,0 @@
-{
-    "slug": "Orders",
-    "name": "Orders",
-    "description": "Module for Managing Orders and Bookings",
-    "version": "1.0",
-    "order": 1,
-    "enabled": true
-}
